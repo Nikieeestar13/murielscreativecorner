@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Muriels Creative Corner</title>
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #FAF8F5;
+      --surface: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #66625D;
+      --accent: #4b2107;
+      --border: #E8E4DF;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      min-width: 0; 
+    }
+    
+    html { 
+      scroll-behavior: smooth; 
+      overflow-x: hidden;
+    }
+    
+    body { 
+      margin: 0; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background-color: var(--bg-main); 
+      color: var(--text-primary); 
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    h1, h2, h3, .serif { 
+      font-family: 'Playfair Display', serif; 
+    }
+
+    .nav-link { 
+      position: relative; 
+      font-weight: 500; 
+      color: var(--text-secondary); 
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+
+    .icon-chip { 
+      width: 2.25rem; 
+      height: 2.25rem; 
+      display: inline-flex; 
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px; 
+      color: var(--text-primary); 
+      background: var(--surface); 
+      border: 1px solid var(--border);
+      transition: all 0.2s ease; 
+      touch-action: manipulation;
+      flex-shrink: 0;
+    }
+
+    .product-card { 
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease; 
+      touch-action: manipulation;
+    }
+    .product-card:active {
+      transform: scale(0.98);
+    }
+
+    .filter-btn { 
+      border: 1px solid var(--border); 
+      color: var(--text-secondary); 
+      background: var(--surface); 
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      white-space: nowrap;
+    }
+    .filter-btn.active, .filter-btn:active { 
+      background: var(--accent); 
+      color: white; 
+      border-color: var(--accent); 
+    }
+
+    .field { 
+      width: 100%; 
+      border: 1px solid var(--border); 
+      border-radius: 8px; 
+      padding: 0.75rem 1rem; 
+      background: var(--surface); 
+      color: var(--text-primary); 
+      font-size: 16px;
+    }
+    .field:focus { 
+      outline: none; 
+      border-color: var(--text-primary); 
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media (max-width: 767px) { 
+      .desktop-nav { display: none !important; } 
+    }
+    @media (min-width: 768px) { 
+      .mobile-toggle { display: none !important; } 
+      .mobile-nav { display: none !important; } 
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="site-shell min-h-screen flex flex-col w-full overflow-x-hidden">
+    
+    <!-- Header with Right-Aligned Desktop Navigation -->
+    <header class="sticky top-0 z-30 border-b border-[var(--border)] bg-[#FAF8F5]/95 backdrop-blur w-full">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-3 sm:px-6 py-3.5">
+        
+        <div class="flex items-center gap-2">
+          <button id="menu-button" type="button" class="mobile-toggle icon-chip" aria-label="Open menu" aria-expanded="false">
+            <i data-lucide="menu" width="16"></i>
+          </button>
+          
+          <a href="#home" class="flex items-center shrink-0">
+            <span class="serif text-base sm:text-xl tracking-wide font-semibold text-[var(--text-primary)] whitespace-nowrap">Muriels Creative Corner</span>
+          </a>
+        </div>
+
+        <nav class="desktop-nav flex items-center gap-8 ml-auto" aria-label="Primary navigation">
+          <a class="nav-link text-sm uppercase tracking-widest" href="#home">Home</a>
+          <a class="nav-link text-sm uppercase tracking-widest" href="#products">Products</a>
+          <a class="nav-link text-sm uppercase tracking-widest" href="#customize">Customize</a>
+        </nav>
+      </div>
+
+      <nav id="mobile-nav" class="mobile-nav hidden border-t border-[var(--border)] bg-[var(--surface)] px-5 py-4 shadow-md w-full">
+        <div class="flex flex-col gap-3 text-left">
+          <a class="mobile-nav-link text-xs uppercase tracking-wider font-semibold text-[var(--text-primary)] py-1.5 border-b border-gray-100" href="#home">Home</a>
+          <a class="mobile-nav-link text-xs uppercase tracking-wider font-semibold text-[var(--text-primary)] py-1.5 border-b border-gray-100" href="#products">Products</a>
+          <a class="mobile-nav-link text-xs uppercase tracking-wider font-semibold text-[var(--text-primary)] py-1.5" href="#customize">Customize</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow w-full">
+      <!-- Hero Section -->
+      <section id="home" class="relative overflow-hidden px-3.5 sm:px-6 py-8 sm:py-16 lg:px-12 w-full">
+        <div class="absolute inset-0 z-0 opacity-25 pointer-events-none flex items-center justify-center">
+          <img 
+            src="background.jpg" 
+            class="h-full w-full object-cover"
+          >
+        </div>
+
+        <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-6 sm:gap-12 lg:grid-cols-2 w-full">
+          <div class="flex flex-col items-start w-full">
+            <p class="mb-1.5 sm:mb-3 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)] font-semibold">Slowly Crafted Joy</p>
+            
+            <h1 class="serif text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight text-[var(--text-primary)] break-words w-full">
+              Timeless keepsakes, handcrafted.
+            </h1>
+            
+            <p class="mt-3 sm:mt-6 max-w-lg text-xs sm:text-base leading-relaxed text-[var(--text-secondary)] break-words">
+              Thoughtfully crocheted one stitch at a time. Crafted in refined palettes designed with intention.
+            </p>
+
+            <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-4">
+              <a class="w-full sm:w-auto text-center bg-[var(--accent)] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wide transition active:opacity-90" href="#products">
+                Explore Collection
+              </a>
+              <a class="w-full sm:w-auto text-center border border-[var(--border)] bg-[var(--surface)] text-[var(--text-primary)] px-6 py-3 rounded-full text-xs sm:text-sm font-medium tracking-wide transition active:bg-[#F0ECE1]" href="#customize">
+                Custom Orders
+              </a>
+            </div>
+
+            <div class="mt-8 sm:mt-16 grid grid-cols-2 gap-2.5 sm:gap-6 w-full">
+              <article class="p-3 sm:p-6 border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-sm rounded-lg">
+                <h3 class="serif text-xs sm:text-lg font-semibold text-[var(--text-primary)]">Crochet Works</h3>
+                <p class="mt-1 text-[10px] sm:text-xs text-[var(--text-secondary)] leading-normal">Memorable little treasures</p>
+              </article>
+              <article class="p-3 sm:p-6 border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-sm rounded-lg">
+                <h3 class="serif text-xs sm:text-lg font-semibold text-[var(--text-primary)]">Custom work</h3>
+                <p class="mt-1 text-[10px] sm:text-xs text-[var(--text-secondary)] leading-normal">Personalised handcrafted figurines for life’s special occasions.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-md mt-4 lg:mt-0">
+            <div class="w-full bg-[#EAE6DF] rounded-lg overflow-hidden p-1.5 sm:p-0">
+              <img 
+                loading="lazy" 
+                class="w-full h-auto max-h-[320px] sm:max-h-none sm:aspect-[4/5] object-cover rounded sm:rounded-none shadow-sm" 
+                src="bouquet.jpg"
+                alt="Minimalist handmade piece"
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section id="products" class="border-t border-[var(--border)] px-3.5 sm:px-6 py-10 sm:py-20 lg:px-12 w-full">
+        <div class="mx-auto max-w-7xl w-full">
+          <div class="flex flex-col gap-1 sm:flex-row sm:items-end justify-between">
+            <div>
+              <p class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)] font-semibold">Selected Catalog</p>
+              <h2 class="serif text-xl sm:text-3xl font-medium mt-0.5 text-[var(--text-primary)]">Maker's Market</h2>
+            </div>
+            <p id="product-count" class="text-[10px] sm:text-xs uppercase tracking-widest text-[var(--text-secondary)] mt-1 sm:mt-0" aria-live="polite"></p>
+          </div>
+
+          <div class="mt-5 sm:mt-8 py-3 border-y border-[var(--border)] w-full">
+            <div class="grid gap-2.5 sm:gap-4 lg:grid-cols-[1fr_auto_auto] lg:items-center w-full">
+              <div class="relative w-full">
+                <i data-lucide="search" class="absolute left-3 top-3 text-[var(--text-secondary)]" width="15"></i>
+                <input id="search-input" class="field pl-9 text-xs sm:text-sm" type="search" placeholder="Search catalog...">
+              </div>
+
+              <div class="flex gap-2 overflow-x-auto no-scrollbar py-0.5 w-full">
+                <button class="filter-btn active rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" type="button" data-category="All">All</button>
+                <button class="filter-btn rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" type="button" data-category="Amigurumi">Amigurumi</button>
+                <button class="filter-btn rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" type="button" data-category="Keychains">Keychains</button>
+                <button class="filter-btn rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" type="button" data-category="Flowers">Flowers</button>
+              </div>
+
+              <select id="price-filter" class="field text-xs sm:text-sm w-full">
+                <option value="all">All Prices</option>
+                <option value="under500">Under ₹500</option>
+                <option value="500to1000">₹500–₹1000</option>
+                <option value="over1000">Over ₹1000</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="product-grid" class="mt-6 grid grid-cols-2 gap-2.5 sm:gap-6 lg:grid-cols-4 w-full">
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Baby Shark',
+                       price: '₹300',
+                       description: 'Cutest little shark in the sea',
+                       images: [
+                         'fish1.webp',
+                         'fish3.webp',
+                         'fish2.webp'
+                       ]
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="fish1.webp" alt="Market Bag">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Baby Shark</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹300</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="1500"
+                     onclick="openProductModal({
+                       title: 'Teddy',
+                       price: '₹1500',
+                       description: 'xxxxxxxxxxxxx',
+                       images: [
+                         'teddy3.webp',
+                         'teddy2.webp',
+                         'teddy1.webp'
+                       ]
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="teddy3.webp" >
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Teddy</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹1500</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="800"
+                     onclick="openProductModal({
+                       title: 'Letter Keychains',
+                       price: '₹800',
+                       description: 'xxxxxxx',
+                       images: [
+                         'key1.jpg',
+                         'key2.jpg'
+                       ]
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="key1.jpg">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Letter Keychain</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹800</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Lily',
+                       price: '₹400',
+                       description: 'xxxxxxxxxx',
+                       images: [
+                         'lily1.jpg',
+                         'lily2.jpg'
+                       ]
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="lily1.jpg" alt="Painting">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Lily</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹400</span>
+              </div>
+            </article>
+          </div>
+
+          <p id="no-results" class="hidden py-12 text-center text-xs sm:text-sm text-[var(--text-secondary)] italic">
+            No matching pieces found.
+          </p>
+        </div>
+      </section>
+
+      <!-- Custom Order Section -->
+      <section id="customize" class="border-t border-[var(--border)] bg-[#cb8737] px-3.5 sm:px-6 py-10 sm:py-20 lg:px-12 w-full">
+        <div class="mx-auto grid max-w-5xl gap-6 sm:gap-12 lg:grid-cols-[1fr_1.2fr] w-full">
+          <div>
+            <p class="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-white">Custom Design</p>
+            <h2 class="serif text-xl sm:text-3xl font-medium mt-0.5">Got an idea? Bring it to life</h2>
+            <p class="mt-2 sm:mt-4 text-xs sm:text-sm leading-relaxed text-white">
+              Paint me a picture - your idea, color pallete, quantity. We will get back to you soon.
+            </p>
+          </div>
+
+          <form id="custom-form" class="bg-[var(--surface)] p-4 sm:p-8 border border-[var(--border)] rounded-lg shadow-sm w-full" novalidate>
+            <div class="grid gap-3 sm:grid-cols-2 w-full">
+              <div>
+                <label class="block text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-semibold text-[var(--text-secondary)]" for="name">Name *</label>
+                <input id="name" class="field" required>
+              </div>
+              <div>
+                <label class="block text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-semibold text-[var(--text-secondary)]" for="email">Email *</label>
+                <input id="email" class="field" type="email" required>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-semibold text-[var(--text-secondary)]" for="details">Project Details *</label>
+              <textarea id="details" class="field min-h-24" required></textarea>
+            </div>
+
+            <p id="form-status" class="mt-3 text-xs font-medium" aria-live="polite"></p>
+
+            <button class="mt-4 w-full bg-[var(--accent)] text-white py-3 text-xs uppercase tracking-widest font-semibold transition active:opacity-90 rounded-md" type="submit">
+              Submit Request
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-[var(--border)] px-4 py-6 text-center w-full">
+      <p class="text-[10px] sm:text-xs tracking-wider text-[var(--text-secondary)]">
+        &copy; Muriels Creative Corner. All rights reserved.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="product-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onclick="handleBackdropClick(event)">
+    <div class="max-w-md w-full bg-[var(--surface)] p-5 sm:p-6 rounded-xl border border-[var(--border)] shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      
+      <!-- Close Button -->
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition" aria-label="Close modal">
+        ✕
+      </button>
+
+      <h2 id="modal-title" class="serif text-xl sm:text-2xl font-semibold mb-3 pr-8 text-[var(--text-primary)]">Product Title</h2>
+
+      <!-- Slideshow Container -->
+      <div class="relative w-full aspect-square bg-[#F2EFEA] rounded-lg overflow-hidden mb-4">
+        <img id="modal-slideshow-image" class="w-full h-full object-cover transition-all duration-300" src="" alt="Product view">
+        
+        <!-- Controls -->
+        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
+          &#10094;
+        </button>
+        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
+          &#10095;
+        </button>
+
+        <!-- Slide Indicator -->
+        <div id="modal-slide-indicator" class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[10px] px-2.5 py-0.5 rounded-full">
+          1 / 3
+        </div>
+      </div>
+
+      <!-- Price & Description -->
+      <div class="text-center my-3">
+        <span id="modal-price" class="text-2xl font-bold text-[var(--text-primary)]">$0</span>
+        <p id="modal-description" class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1.5 leading-relaxed">Product description goes here.</p>
+      </div>
+
+      <!-- Inquire via WhatsApp Button -->
+      <button onclick="inquireOnWhatsApp()" class="w-full bg-[#25D366] text-white py-3 rounded-md text-xs sm:text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition flex items-center justify-center gap-2">
+        Inquire Now
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let activeCategory = "All";
+    const cards = [...document.querySelectorAll(".product-card")];
+    const count = document.getElementById("product-count");
+    const noResults = document.getElementById("no-results");
+
+    function filterProducts() {
+      const query = document.getElementById("search-input").value.trim().toLowerCase();
+      const price = document.getElementById("price-filter").value;
+      let visible = 0;
+
+      cards.forEach(card => {
+        const matchesCategory = activeCategory === "All" || card.dataset.category === activeCategory;
+        const text = card.textContent.toLowerCase();
+        const value = Number(card.dataset.price);
+        const matchesSearch = !query || text.includes(query);
+        const matchesPrice = price === "all" || (price === "under500" && value < 500) || (price === "500to1000" && value >= 500 && value <= 1000) || (price === "over1000" && value > 1000);
+
+        const show = matchesCategory && matchesSearch && matchesPrice;
+        card.classList.toggle("hidden", !show);
+        if (show) visible++;
+      });
+
+      count.textContent = visible + (visible === 1 ? " Item Displayed" : " Items Displayed");
+      noResults.classList.toggle("hidden", visible !== 0);
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(button => button.addEventListener("click", () => {
+      activeCategory = button.dataset.category;
+      document.querySelectorAll(".filter-btn").forEach(item => item.classList.toggle("active", item === button));
+      filterProducts();
+    }));
+
+    document.getElementById("search-input").addEventListener("input", filterProducts);
+    document.getElementById("price-filter").addEventListener("change", filterProducts);
+
+    const menuButton = document.getElementById("menu-button");
+    const mobileNav = document.getElementById("mobile-nav");
+    
+    function toggleMobileNav() {
+      const isHidden = mobileNav.classList.toggle("hidden");
+      menuButton.setAttribute("aria-expanded", String(!isHidden));
+    }
+
+    menuButton.addEventListener("click", toggleMobileNav);
+
+    document.querySelectorAll(".mobile-nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        if (!mobileNav.classList.contains("hidden")) {
+          toggleMobileNav();
+        }
+      });
+    });
+
+    /* Product Modal & Slideshow Logic */
+    let currentImages = [];
+    let currentSlideIndex = 0;
+    let activeProduct = null;
+
+    function openProductModal(product) {
+      activeProduct = product;
+      currentImages = product.images;
+      currentSlideIndex = 0;
+
+      document.getElementById('modal-title').textContent = product.title;
+      document.getElementById('modal-price').textContent = product.price;
+      document.getElementById('modal-description').textContent = product.description;
+      
+      updateSlideshow();
+      document.getElementById('product-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function handleBackdropClick(event) {
+      if (event.target === document.getElementById('product-modal')) {
+        closeProductModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProductModal();
+      }
+    });
+
+    function updateSlideshow() {
+      const imgElement = document.getElementById('modal-slideshow-image');
+      const indicator = document.getElementById('modal-slide-indicator');
+
+      imgElement.src = currentImages[currentSlideIndex];
+      indicator.textContent = `${currentSlideIndex + 1} / ${currentImages.length}`;
+    }
+
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % currentImages.length;
+      updateSlideshow();
+    }
+
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + currentImages.length) % currentImages.length;
+      updateSlideshow();
+    }
+
+    function inquireOnWhatsApp() {
+      if (!activeProduct) return;
+      const phoneNumber = "8767465714";
+      const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) lucide.createIcons();
+      filterProducts();
+    });
+  </script>
+</body>
+</html>
