@@ -524,10 +524,7 @@
   if (!activeProduct) return;
   const phoneNumber = "918767465714";
   
-  // Gets the first image URL from the product's image array
-  const imageUrl = activeProduct.images && activeProduct.images.length > 0 ? activeProduct.images[0] : '';
-  
-  const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}\n*Image:* ${imageUrl}`;
+  const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
   
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
