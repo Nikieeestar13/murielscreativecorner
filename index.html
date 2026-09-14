@@ -157,8 +157,9 @@
       <section id="home" class="relative overflow-hidden px-3.5 sm:px-6 py-8 sm:py-16 lg:px-12 w-full">
         <div class="absolute inset-0 z-0 opacity-25 pointer-events-none flex items-center justify-center">
           <img 
-            src="background.jpg" 
+            src="background.webp" 
             class="h-full w-full object-cover"
+            alt="Hero Background"
           >
         </div>
 
@@ -189,7 +190,7 @@
               <img 
                 loading="lazy" 
                 class="w-full h-auto max-h-[320px] sm:max-h-none sm:aspect-[4/5] object-cover rounded sm:rounded-none shadow-sm" 
-                src="bouquet.jpg"
+                src="bouquet.webp"
                 alt="Minimalist handmade piece"
               >
             </div>
@@ -233,24 +234,236 @@
 
           <div id="product-grid" class="mt-6 grid grid-cols-2 gap-2.5 sm:gap-6 lg:grid-cols-4 w-full">
             <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Doll',
+                       price: 'pending',
+                       description: 'A tiny, hand-stitched companion ready to bring big personality to your shelf.',
+                       images: ['doll2.webp', 'doll1.webp', 'doll3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="doll2.webp" alt="Doll">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Doll</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Chick',
+                       price: 'pending',
+                       description: 'Dressed to impress in its tiny top hat.',
+                       images: ['chick.webp', 'chick1.webp', 'chick2.webp', 'chick3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="chick.webp" alt="Chick">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Chick</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Bunny Buddies',
+                       price: 'pending',
+                       description: 'Double the ears, double the fun',
+                       images: ['tb4.webp', 'tb3.jpg', 'tb2.webp', 'tb5.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="tb4.webp" alt="Bunny Buddies">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bunny Buddies</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Spidey',
+                       price: 'pending',
+                       description: 'With great power comes great cute-ness!',
+                       images: ['spidey.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="spidey.webp" alt="Spidey">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Spidey</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Cow',
+                       price: 'pending',
+                       description: 'An un-moo-lievably soft barnyard buddy!.',
+                       images: ['cow1.webp', 'cow2.webp', 'cow3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="cow1.webp" alt="Cow">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Cow</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Christmas Reindeer',
+                       price: 'pending',
+                       description: 'Prancing straight into your holiday cheer!',
+                       images: ['creindeer3.webp', 'creindeer2.webp', 'creindeer1.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="creindeer3.webp" alt="Christmas Reindeer">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Christmas Reindeer</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Bouquet of yarn Goodness',
+                       price: 'pending',
+                       description: 'An everlasting floral bundle',
+                       images: ['bouquet2.webp', 'bouquet3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="bouquet2.webp" alt="Bouquet">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bouquet of yarn Goodness</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Kittens',
+                       price: 'pending',
+                       description: 'A purr-fect trio!',
+                       images: ['kitty1.webp', 'kitty2.webp', 'kitty3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="kitty1.webp" alt="Kittens">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Kittens</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Bunny Plushie',
+                       price: 'pending',
+                       description: 'Skipping into your heart with a bow and a bounce!',
+                       images: ['rabbit3.webp', 'rabbit1.webp', 'rabbit2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="rabbit3.webp" alt="Bunny Plushie">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bunny Plushie</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Sheep',
+                       price: 'pending',
+                       description: 'Fluffy, woolly, and 100% cuddle-approved',
+                       images: ['sheep1.webp', 'sheep2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="sheep1.webp" alt="Sheep">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Sheep</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Snail',
+                       price: 'pending',
+                       description: 'Slow down and soak up the cute!',
+                       images: ['snail1.webp', 'snail2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="snail1.webp" alt="Snail">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Snail</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
                      data-category="Amigurumi" data-price="300"
                      onclick="openProductModal({
                        title: 'Baby Shark',
                        price: '₹300',
                        description: 'Cutest little shark in the sea',
-                       images: [
-                         'fish1.webp',
-                         'fish3.webp',
-                         'fish2.webp'
-                       ]
+                       images: ['fish1.webp', 'fish3.webp', 'fish2.webp']
                      })">
               <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
-                <img loading="lazy" class="h-full w-full object-cover" src="fish1.webp" alt="Market Bag">
+                <img loading="lazy" class="h-full w-full object-cover" src="fish1.webp" alt="Baby Shark">
               </div>
               <div class="mt-2">
                 <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
                 <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Baby Shark</h3>
                 <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹300</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Sunflower keychain',
+                       price: 'pending',
+                       description: 'A permanent pop of summertime warmth',
+                       images: ['sf1.jpg', 'sf2.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="sf1.jpg" alt="Sunflower keychain">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Sunflower keychain</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
               </div>
             </article>
 
@@ -259,15 +472,11 @@
                      onclick="openProductModal({
                        title: 'Teddy',
                        price: '₹1500',
-                       description: 'xxxxxxxxxxxxx',
-                       images: [
-                         'teddy3.webp',
-                         'teddy2.webp',
-                         'teddy1.webp'
-                       ]
+                       description: 'Bear-y ready for bedtime stories!',
+                       images: ['teddy3.webp', 'teddy2.webp', 'teddy1.webp']
                      })">
               <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
-                <img loading="lazy" class="h-full w-full object-cover" src="teddy3.webp" >
+                <img loading="lazy" class="h-full w-full object-cover" src="teddy3.webp" alt="Teddy">
               </div>
               <div class="mt-2">
                 <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
@@ -281,14 +490,11 @@
                      onclick="openProductModal({
                        title: 'Letter Keychains',
                        price: '₹800',
-                       description: 'xxxxxxx',
-                       images: [
-                         'key1.jpg',
-                         'key2.jpg'
-                       ]
+                       description: 'Personalised letter keychains',
+                       images: ['letter4.webp', 'a.webp', 'r.webp', 's.webp']
                      })">
               <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
-                <img loading="lazy" class="h-full w-full object-cover" src="letter4.webp">
+                <img loading="lazy" class="h-full w-full object-cover" src="letter4.webp" alt="Letter Keychain">
               </div>
               <div class="mt-2">
                 <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
@@ -302,19 +508,484 @@
                      onclick="openProductModal({
                        title: 'Lily',
                        price: '₹400',
-                       description: 'xxxxxxxxxx',
-                       images: [
-                         'lily1.jpg',
-                         'lily2.jpg'
-                       ]
+                       description: 'Pure elegance that never wilts!',
+                       images: ['lily.webp', 'lily3.webp', 'lily2.webp']
                      })">
               <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
-                <img loading="lazy" class="h-full w-full object-cover" src="lily1.jpg" alt="Painting">
+                <img loading="lazy" class="h-full w-full object-cover" src="lily.webp" alt="Lily">
               </div>
               <div class="mt-2">
                 <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
                 <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Lily</h3>
                 <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">₹400</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Giraffe',
+                       price: 'pending',
+                       description: 'You\'re giraffe-ing me crazy!',
+                       images: ['giraffe1.webp', 'giraffe2.webp', 'giraffe3.webp', 'giraffe4.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="giraffe1.webp" alt="Giraffe">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Giraffe</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Bumble Bee',
+                       price: 'pending',
+                       description: 'What’s all the buzz about? This little worker bee is ready to fly straight into your heart!',
+                       images: ['bee1.webp', 'bee2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="bee1.webp" alt="Bumble Bee">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bumble Bee</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Donkey',
+                       price: 'pending',
+                       description: 'A zero-maintenance farm friend!',
+                       images: ['donkey.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="donkey.webp" alt="Donkey">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Donkey</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Daffodil',
+                       price: 'pending',
+                       description: 'Freshly picked from the yarn garden!',
+                       images: ['daff.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="daff.webp" alt="Daffodil">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Daffodil</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Koala',
+                       price: 'pending',
+                       description: 'You have all the necessary koala-fications to be my bestie!',
+                       images: ['koala1.webp', 'koala2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="koala1.webp" alt="Koala">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Koala</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Ferns',
+                       price: 'pending',
+                       description: 'Soft green stitches, delicate textured leaves',
+                       images: ['l2.jpg', 'l1.webp', 'l3.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="l2.jpg" alt="Ferns">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Ferns</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Holy Rosary',
+                       price: 'pending',
+                       description: 'Threaded with grace!',
+                       images: ['rosary.webp', 'rosary2.jpg', 'rosary1.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="rosary.webp" alt="Holy Rosary">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Holy Rosary</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Flower Stalk',
+                       price: 'pending',
+                       description: 'A handcrafted floral stem made to brighten your day',
+                       images: ['f1.webp', 'f2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="f1.webp" alt="Flower Stalk">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Flower Stalk</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Puppy',
+                       price: 'pending',
+                       description: 'Paw-sitively adorable!',
+                       images: ['pup1.webp', 'pup2.webp', 'pup3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="pup1.webp" alt="Puppy">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Puppy</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Squirrel',
+                       price: 'pending',
+                       description: 'Going nuts over this little woodland friend',
+                       images: ['squi2.webp', 'squi1.webp', 'squi3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="squi2.webp" alt="Squirrel">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Squirrel</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Flower Keychain',
+                       price: 'pending',
+                       description: 'Proof that good things come in small packages!',
+                       images: ['fk1.jpg', 'fk2.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="fk1.jpg" alt="Flower Keychain">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychains</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Flower Keychain</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Black Cat',
+                       price: 'pending',
+                       description: 'Feelin\' feline',
+                       images: ['cat3.webp', 'cat2.webp', 'cat1.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="cat3.webp" alt="Black Cat">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Black cat</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Twin Turtles',
+                       price: 'pending',
+                       description: 'You’re turtle-y meant to take these home!',
+                       images: ['yturtle2.webp', 'yturtle4.webp', 'yturtle1.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="yturtle2.webp" alt="Twin Turtles">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Twin Turtles</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Bow',
+                       price: 'pending',
+                       description: 'Tied with love and ready to charm!',
+                       images: ['bow.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="bow.webp" alt="Bow">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bow</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Pocket Sun',
+                       price: 'pending',
+                       description: 'I\'ve got that sunshine in my pocket',
+                       images: ['sun3.webp', 'sun1.webp', 'sun2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="sun3.webp" alt="Pocket Sun">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Pocket Sun</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Penguin',
+                       price: 'pending',
+                       description: 'What a distinguished gentleman',
+                       images: ['penguin.webp', 'penguin1.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="penguin.webp" alt="Penguin">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Penguin</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Bears',
+                       price: 'pending',
+                       description: 'Un-bear-ably cute!',
+                       images: ['bears.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="bears.jpg" alt="Bears">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Bears</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Calla Lily',
+                       price: 'pending',
+                       description: 'Pure elegance in every stitch!',
+                       images: ['lilyt.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="lilyt.webp" alt="Calla Lily">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Calla Lily</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			 
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Keychains" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Lemon',
+                       price: 'pending',
+                       description: 'When life gives you lemons... keep them soft and cuddly!',
+                       images: ['lemon1.webp', 'lemon3.webp', 'lemon2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="lemon1.webp" alt="Lemon">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Keychain</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Lemon</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Flowers" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Tulip',
+                       price: 'pending',
+                       description: 'A cozy tulip that stays bright and perky 365 days a year.',
+                       images: ['tulip.webp', 'tulip1.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="tulip.webp" alt="Tulip">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Flowers</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Tulip</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Hippo',
+                       price: 'pending',
+                       description: 'She\'s beauty, she\'s grace, she\'s got a super soft, plushy face!',
+                       images: ['hippo3.webp', 'hippo2.webp', 'hippo1.jpg']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="hippo3.webp" alt="Hippo">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Hippo</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Piggy',
+                       price: 'pending',
+                       description: 'A tiny pink buddy ready to add a pop of piggy perfection to your collection.',
+                       images: ['pig1.webp', 'pig2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="pig1.webp" alt="Piggy">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Piggy</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Turtle',
+                       price: 'pending',
+                       description: 'Slowly, surely, and totally turtle-y adorable!',
+                       images: ['pturtle1.webp', 'pturtle2.webp', 'pturtle3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="pturtle1.webp" alt="Turtle">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Turtle</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Tiny Cow',
+                       price: 'pending',
+                       description: 'Holy cow, that\'s cute!',
+                       images: ['minicow1.webp', 'minicow2.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="minicow1.webp" alt="Mini Cow">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Mini Cow</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="400"
+                     onclick="openProductModal({
+                       title: 'Fox',
+                       price: 'pending',
+                       description: 'Totally fox-y!',
+                       images: ['fox3.webp', 'fox2.webp', 'fox4.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="fox3.webp" alt="Fox">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Fox</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
+              </div>
+            </article>
+			
+            <article class="product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer" 
+                     data-category="Amigurumi" data-price="300"
+                     onclick="openProductModal({
+                       title: 'Elephant',
+                       price: 'pending',
+                       description: 'Phant-astic in every stitch!',
+                       images: ['elephant1.webp', 'elephant2.webp', 'elephant3.webp']
+                     })">
+              <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
+                <img loading="lazy" class="h-full w-full object-cover" src="elephant1.webp" alt="Elephant">
+              </div>
+              <div class="mt-2">
+                <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">Amigurumi</span>
+                <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">Elephant</h3>
+                <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">pending</span>
               </div>
             </article>
           </div>
@@ -332,7 +1003,7 @@
             <p class="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-white">Custom Design</p>
             <h2 class="serif text-xl sm:text-3xl font-medium mt-0.5">Got an idea? Bring it to life</h2>
             <p class="mt-2 sm:mt-4 text-xs sm:text-sm leading-relaxed text-white">
-              Paint me a picture - your idea, color pallete, quantity. We will get back to you soon.
+              Paint me a picture - your idea, color palette, quantity. We will get back to you soon.
             </p>
           </div>
 
@@ -343,8 +1014,8 @@
                 <input id="name" class="field" required>
               </div>
               <div>
-                <label class="block text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-semibold text-[var(--text-secondary)]" for="email">Email *</label>
-                <input id="email" class="field" type="email" required>
+                <label class="block text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-semibold text-[var(--text-secondary)]" for="phone">Phone / WhatsApp Number *</label>
+                <input id="phone" class="field" type="tel" placeholder="e.g., 9876543210" required>
               </div>
             </div>
 
@@ -405,8 +1076,11 @@
         <p id="modal-description" class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1.5 leading-relaxed">Product description goes here.</p>
       </div>
 
-      <!-- Inquire via WhatsApp Button -->
+      <!-- Inquire via WhatsApp Button with WhatsApp Icon -->
       <button onclick="inquireOnWhatsApp()" class="w-full bg-[#25D366] text-white py-3 rounded-md text-xs sm:text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition flex items-center justify-center gap-2">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
         Inquire Now
       </button>
     </div>
@@ -466,6 +1140,32 @@
       });
     });
 
+    /* Custom Form WhatsApp Handling */
+    document.getElementById("custom-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const details = document.getElementById("details").value.trim();
+      const statusElement = document.getElementById("form-status");
+
+      if (!name || !phone || !details) {
+        statusElement.textContent = "Please fill in all required fields.";
+        statusElement.className = "mt-3 text-xs font-medium text-red-500";
+        return;
+      }
+
+      const targetNumber = "918767465714";
+      const message = `*New Custom Order Request*\n\n*Name:* ${name}\n*Phone / WhatsApp:* ${phone}\n*Project Details:* ${details}`;
+
+      const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`;
+      
+      statusElement.textContent = "Redirecting to WhatsApp...";
+      statusElement.className = "mt-3 text-xs font-medium text-green-600";
+
+      window.open(whatsappUrl, "_blank");
+    });
+
     /* Product Modal & Slideshow Logic */
     let currentImages = [];
     let currentSlideIndex = 0;
@@ -520,15 +1220,15 @@
       updateSlideshow();
     }
 
- function inquireOnWhatsApp() {
-  if (!activeProduct) return;
-  const phoneNumber = "918788234001";
-  
-  const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
-  
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-}
+    function inquireOnWhatsApp() {
+      if (!activeProduct) return;
+      const phoneNumber = "918767465714";
+      
+      const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
+      
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
       if (window.lucide) lucide.createIcons();
