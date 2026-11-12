@@ -18,7 +18,7 @@ function renderAll(){
  $("product-total").textContent=catalog.products.length; $("category-total").textContent=catalog.categories.length;
  $("product-category").innerHTML=catalog.categories.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join("");
  $("category-list").innerHTML=catalog.categories.map(c=>'<div class="category-row"><span class="category-name">'+esc(c)+'</span><span class="small-actions"><button class="secondary" data-rename="'+esc(c)+'">Rename</button><button class="secondary" data-delete-category="'+esc(c)+'">Delete</button></span></div>').join("");
- $("product-list").innerHTML=catalog.products.map(p=>'<div class="product-row" data-search="'+esc((p.name+" "+p.category).toLowerCase())+'"><div class="product-info"><img src="'+esc(p.images[0])+'" alt=""><div><strong>'+esc(p.name)+'</strong><small>'+esc(p.category)+' · ₹'+Number(p.price).toLocaleString("en-IN")+'</small></div></div><span class="small-actions"><button class="secondary" data-edit="'+esc(p.id)+'">Edit</button><button class="secondary" data-delete="'+esc(p.id)+'">Delete</button></span></div>').join("");
+ $("product-list").innerHTML=catalog.products.map(p=>'<div class="product-row" data-search="'+esc((p.name+" "+p.category).toLowerCase())+'"><div class="product-info"><img src="'+esc(p.images[0])+'" alt=""><div><strong>'+esc(p.name)+'</strong><small>'+esc(p.category)+' · ₹'+(p.price==null?(p.priceLabel||'Price not set'):Number(p.price).toLocaleString('en-IN'))+'</small></div></div><span class="small-actions"><button class="secondary" data-edit="'+esc(p.id)+'">Edit</button><button class="secondary" data-delete="'+esc(p.id)+'">Delete</button></span></div>').join("");
 }
 async function saveCatalog(){
  status("publish-status","Publishing changes to GitHub…");
