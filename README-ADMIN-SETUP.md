@@ -6,7 +6,7 @@
 - Add, rename and delete categories. A category cannot be deleted while products still use it; renaming updates its products.
 - Product and category data are stored together in `catalog.json`. A successful save commits that file to GitHub and publishes through the existing Pages workflow.
 - The storefront reads `catalog.json` and keeps its existing visual design, filters, modal slideshow, WhatsApp enquiry and custom order form.
-- Existing 52 products are migrated from the current storefront. Legacy products are normalized to exactly three slideshow images by repeating the last available image when needed, or keeping the first three when there were more. Products historically marked pending retain a blank price label in the storefront; newly created products require a numeric price.
+- Existing 52 products are migrated from the current storefront. Legacy products retain their original slideshow image sets. New products and products saved through the admin require exactly three images. Products historically marked pending retain a blank price label in the storefront; newly created products require a numeric price.
 
 ## Deployment — required one-time setup
 
