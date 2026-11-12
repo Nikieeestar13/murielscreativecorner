@@ -1,0 +1,14 @@
+name = "muriels-creative-corner-admin"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+GITHUB_OWNER = "Nikieeestar13"
+GITHUB_REPO = "murielscreativecorner"
+GITHUB_BRANCH = "main"
+ADMIN_USERNAME = "muriel"
+ALLOWED_ORIGIN = "https://nikieeestar13.github.io"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
