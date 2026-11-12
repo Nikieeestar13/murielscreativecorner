@@ -1,7 +1,9 @@
 name = "muriels-creative-corner-admin"
 main = "index.js"
 compatibility_date = "2026-11-12"
-
+[[kv_namespaces]]
+binding = "MURIELS_ADMIN_RATE_LIMIT"
+id = "673b95e6d6774835aed15d8fc22de30b"
 [vars]
 GITHUB_OWNER = "YOUR_GITHUB_USERNAME"
 GITHUB_REPO = "YOUR_REPOSITORY_NAME"
