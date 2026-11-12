@@ -1,0 +1,1 @@
+window.MURIELS_ADMIN_CONFIG = { apiBase: "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev" };
