@@ -1,10 +1,112 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Muriels Creative Corner | Admin</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="admin.css"></head>
-<body><main class="shell"><header class="top"><a href="index.html" class="brand">Muriels Creative Corner</a><a href="index.html" class="back">View storefront ↗</a></header>
-<section id="login-panel" class="panel login"><p class="eyebrow">PRIVATE AREA</p><h1>Welcome back</h1><p class="muted">Sign in to manage your handmade collection.</p><form id="login-form"><label>Username<input id="username" autocomplete="username" required></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="primary" type="submit">Log in</button><p id="login-status" class="status" aria-live="polite"></p></form></section>
-<section id="dashboard" hidden><div class="heading"><div><p class="eyebrow">CATALOGUE MANAGEMENT</p><h1>Product dashboard</h1><p class="muted">Changes publish to the storefront through GitHub.</p></div><button id="logout" class="secondary">Log out</button></div>
-<div class="stats"><div class="stat"><span>Products</span><strong id="product-total">0</strong></div><div class="stat"><span>Categories</span><strong id="category-total">0</strong></div></div>
-<div class="columns"><section class="panel"><h2 id="form-heading">Add a product</h2><form id="product-form"><input id="product-id" type="hidden"><label>Product name<input id="product-name" maxlength="100" required></label><label>Category<select id="product-category" required></select></label><label>Price (₹)<input id="product-price" type="number" min="0" step="1" inputmode="numeric" required></label><label>Description<textarea id="product-description" rows="4" maxlength="1000" required></textarea></label><div class="image-fields"><label>Image URL 1<input id="image-1" type="url" placeholder="https://..." required></label><label>Image URL 2<input id="image-2" type="url" placeholder="https://..." required></label><label>Image URL 3<input id="image-3" type="url" placeholder="https://..." required></label></div><div id="previews" class="previews"><div>Image preview 1</div><div>Image preview 2</div><div>Image preview 3</div></div><p id="form-status" class="status" aria-live="polite"></p><div class="actions"><button class="primary" type="submit" id="save-product">Add product</button><button class="secondary" type="button" id="cancel-edit" hidden>Cancel edit</button></div></form></section>
-<section class="panel"><h2>Categories</h2><form id="category-form" class="inline-form"><input id="new-category" placeholder="New category name" maxlength="40" required><button class="secondary" type="submit">Add</button></form><div id="category-list" class="category-list"></div><p class="hint">A category cannot be deleted while products are assigned to it. Reassign those products first.</p></section></div>
-<section class="panel inventory"><div class="inventory-head"><h2>Current products</h2><input id="product-search" placeholder="Search products…"></div><div id="product-list" class="product-list"></div></section>
-<p id="publish-status" class="publish-status" aria-live="polite"></p></section></main><script src="config.js"></script><script src="admin.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muriels Creative Corner | Admin</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#FAF8F5;--surface:#fff;--ink:#1A1A1A;--muted:#66625D;--accent:#4b2107;--border:#E8E4DF}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif}
+    h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+    .field{width:100%;border:1px solid var(--border);border-radius:8px;padding:.75rem .9rem;background:#fff;font-size:14px}
+    .field:focus{outline:2px solid #4b210722;border-color:var(--accent)}
+    .btn{border-radius:7px;padding:.7rem 1rem;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .btn-primary{background:var(--accent);color:#fff}.btn-secondary{border:1px solid var(--border);background:#fff}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:12px}
+    .tab.active{background:var(--accent);color:#fff}
+    .preview{aspect-ratio:1/1;object-fit:cover;width:100%;border-radius:8px;background:#f2efea}
+  </style>
+</head>
+<body>
+  <header class="border-b border-[#E8E4DF] bg-white/90">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="serif text-lg sm:text-xl font-semibold">Muriels Creative Corner</a>
+      <a href="index.html" class="text-xs uppercase tracking-widest text-[#66625D]">View Storefront ↗</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12">
+    <section id="login-panel" class="panel max-w-md mx-auto p-6 sm:p-8">
+      <p class="text-[10px] uppercase tracking-[.2em] font-semibold text-[#66625D]">Private access</p>
+      <h1 class="serif text-3xl mt-2">Administrator Login</h1>
+      <p class="text-sm text-[#66625D] mt-2">Sign in to manage your product catalogue.</p>
+      <form id="login-form" class="mt-6 space-y-4">
+        <div><label class="block text-xs font-semibold mb-1" for="username">Username</label><input id="username" class="field" autocomplete="username" required></div>
+        <div><label class="block text-xs font-semibold mb-1" for="password">Password</label><input id="password" class="field" type="password" autocomplete="current-password" required></div>
+        <p id="login-status" class="text-xs" aria-live="polite"></p>
+        <button id="login-button" class="btn btn-primary w-full" type="submit">Login</button>
+      </form>
+      <p class="text-[11px] text-[#777] mt-5">Access is restricted to the store administrator.</p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div><p class="text-[10px] uppercase tracking-[.2em] font-semibold text-[#66625D]">Store management</p><h1 class="serif text-3xl sm:text-4xl mt-1">Admin Dashboard</h1></div>
+        <button id="logout-button" class="btn btn-secondary self-start">Logout</button>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-5">
+        <button class="tab active btn btn-secondary" data-tab="products">Products</button>
+        <button class="tab btn btn-secondary" data-tab="categories">Categories</button>
+      </div>
+
+      <section id="products-tab" class="space-y-5">
+        <div class="panel p-4 sm:p-6">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <div><h2 id="form-heading" class="serif text-2xl">Add New Product</h2><p class="text-xs text-[#66625D] mt-1">All three product images are required.</p></div>
+            <button id="cancel-edit" class="hidden btn btn-secondary">Cancel edit</button>
+          </div>
+          <form id="product-form" class="space-y-4">
+            <input id="product-id" type="hidden">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div><label class="block text-xs font-semibold mb-1" for="product-name">Product name *</label><input id="product-name" class="field" maxlength="100" required></div>
+              <div><label class="block text-xs font-semibold mb-1" for="product-category">Category *</label><select id="product-category" class="field" required></select></div>
+              <div><label class="block text-xs font-semibold mb-1" for="product-price">Price (INR) *</label><input id="product-price" class="field" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 450" required></div>
+              <div class="sm:col-span-2"><label class="block text-xs font-semibold mb-1" for="product-description">Description *</label><textarea id="product-description" class="field min-h-24" rows="3" maxlength="1000" required></textarea></div>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold mb-2">Product images</h3>
+              <p class="text-xs text-[#66625D] mb-3">Paste direct image URLs from GitHub (raw-content or GitHub Pages). Each image must load publicly.</p>
+              <div class="grid sm:grid-cols-3 gap-4">
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-0">Image 1 URL *</label><input id="image-0" class="field image-url" type="url" placeholder="https://..." required><img id="preview-0" class="preview" alt="Image 1 preview"><p id="image-status-0" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-1">Image 2 URL *</label><input id="image-1" class="field image-url" type="url" placeholder="https://..." required><img id="preview-1" class="preview" alt="Image 2 preview"><p id="image-status-1" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-2">Image 3 URL *</label><input id="image-2" class="field image-url" type="url" placeholder="https://..." required><img id="preview-2" class="preview" alt="Image 3 preview"><p id="image-status-2" class="text-[11px]" aria-live="polite"></p></div>
+              </div>
+            </div>
+            <p id="product-status" class="text-xs" aria-live="polite"></p>
+            <div class="flex flex-wrap gap-2"><button id="save-product" class="btn btn-primary" type="submit">Add Product</button><button id="reset-product" class="btn btn-secondary" type="reset">Clear form</button></div>
+          </form>
+        </div>
+
+        <div class="panel p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div><h2 class="serif text-2xl">Existing Products</h2><p id="product-total" class="text-xs text-[#66625D] mt-1"></p></div>
+            <input id="admin-search" class="field sm:max-w-xs" type="search" placeholder="Search products...">
+          </div>
+          <div id="product-list" class="divide-y divide-[#E8E4DF]"></div>
+        </div>
+      </section>
+
+      <section id="categories-tab" class="hidden space-y-5">
+        <div class="panel p-4 sm:p-6">
+          <h2 class="serif text-2xl">Manage Categories</h2>
+          <form id="category-form" class="flex flex-col sm:flex-row gap-2 mt-4">
+            <input id="new-category" class="field flex-1" maxlength="40" placeholder="New category name" required>
+            <button class="btn btn-primary" type="submit">Add Category</button>
+          </form>
+          <p id="category-status" class="text-xs mt-3" aria-live="polite"></p>
+          <div id="category-list" class="mt-4 divide-y divide-[#E8E4DF]"></div>
+        </div>
+      </section>
+      <p id="global-status" class="text-xs mt-4" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

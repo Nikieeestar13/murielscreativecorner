@@ -140,6 +140,7 @@
           <a class="nav-link text-sm uppercase tracking-widest" href="#home">Home</a>
           <a class="nav-link text-sm uppercase tracking-widest" href="#products">Products</a>
           <a class="nav-link text-sm uppercase tracking-widest" href="#customize">Customize</a>
+          <a class="nav-link text-sm uppercase tracking-widest" href="admin.html">Login</a>
         </nav>
       </div>
 
@@ -228,7 +229,9 @@
             </div>
           </div>
 
-          <div id="product-grid" class="mt-6 grid grid-cols-2 gap-2.5 sm:gap-6 lg:grid-cols-4 w-full"></div>
+          <div id="product-grid" class="mt-6 grid grid-cols-2 gap-2.5 sm:gap-6 lg:grid-cols-4 w-full">
+          <!-- Products are rendered from products.json -->
+          </div>
 
           <p id="no-results" class="hidden py-12 text-center text-xs sm:text-sm text-[var(--text-secondary)] italic">
             No matching pieces found.
@@ -326,83 +329,110 @@
     </div>
   </div>
 
+
+  <script src="config.js"></script>
   <script>
     let activeCategory = "All";
-    let cards = [];
-    let activeProduct = null;
+    let products = [];
     let currentImages = [];
     let currentSlideIndex = 0;
+    let activeProduct = null;
+
     const count = document.getElementById("product-count");
     const noResults = document.getElementById("no-results");
-    const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-    const imageUrl = value => {
-      try { const u = new URL(value, location.href); return ["http:","https:"].includes(u.protocol) ? u.href : ""; } catch { return ""; }
-    };
+    const grid = document.getElementById("product-grid");
+    const categoryFilters = document.getElementById("category-filters");
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[ch]));
+    }
+
+    function formatPrice(price) {
+      if (price === null || price === undefined || price === "") return "Price on request";
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency", currency: "INR", maximumFractionDigits: 0
+      }).format(Number(price));
+    }
+
     function renderCategories(categories) {
-      const host = document.getElementById("category-filters");
-      host.innerHTML = "";
+      categoryFilters.innerHTML = "";
       ["All", ...categories].forEach(category => {
         const button = document.createElement("button");
         button.type = "button";
-        button.className = "filter-btn rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" + (category === activeCategory ? " active" : "");
         button.dataset.category = category;
+        button.className = "filter-btn rounded-full px-3.5 py-1.5 text-[10px] sm:text-xs uppercase tracking-wider font-semibold shrink-0" +
+          (category === activeCategory ? " active" : "");
         button.textContent = category;
         button.addEventListener("click", () => {
           activeCategory = category;
-          host.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
+          categoryFilters.querySelectorAll(".filter-btn").forEach(item =>
+            item.classList.toggle("active", item === button));
           filterProducts();
         });
-        host.appendChild(button);
+        categoryFilters.appendChild(button);
       });
-      if (!["All", ...categories].includes(activeCategory)) activeCategory = "All";
     }
-    function renderProducts(products) {
-      const grid = document.getElementById("product-grid");
+
+    function renderProducts() {
       grid.innerHTML = "";
       products.forEach(product => {
-        const images = (product.images || []).map(imageUrl).filter(Boolean);
-        if (!images.length) return;
-        const article = document.createElement("article");
-        article.className = "product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer";
-        article.dataset.category = product.category;
-        article.dataset.price = product.price == null ? "" : String(product.price);
-        article.innerHTML = `
+        const card = document.createElement("article");
+        card.className = "product-card text-left p-2 sm:p-4 rounded-lg flex flex-col justify-between cursor-pointer";
+        card.dataset.category = product.category;
+        card.dataset.price = product.price == null ? "" : String(product.price);
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `View ${product.name}`);
+        const firstImage = product.images?.[0] || "";
+        card.innerHTML = `
           <div class="w-full bg-[#F2EFEA] rounded overflow-hidden aspect-square flex items-center justify-center">
-            <img loading="lazy" class="h-full w-full object-cover" src="${escapeHtml(images[0])}" alt="${escapeHtml(product.name)}">
+            <img loading="lazy" class="h-full w-full object-cover" src="${escapeHtml(firstImage)}" alt="${escapeHtml(product.name)}">
           </div>
           <div class="mt-2">
             <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">${escapeHtml(product.category)}</span>
             <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">${escapeHtml(product.name)}</h3>
-            <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">${escapeHtml(product.price == null ? (product.priceLabel || "Price on request") : "₹" + Number(product.price).toLocaleString("en-IN"))}</span>
+            <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">${escapeHtml(formatPrice(product.price))}</span>
           </div>`;
-        article.addEventListener("click", () => openProductModal({
-          title: product.name,
-          price: product.price == null ? (product.priceLabel || "Price on request") : "₹" + Number(product.price).toLocaleString("en-IN"),
-          description: product.description || "",
-          images
+        card.addEventListener("click", () => openProductModal({
+          id: product.id, title: product.name, price: formatPrice(product.price),
+          description: product.description, images: product.images
         }));
-        grid.appendChild(article);
+        card.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            card.click();
+          }
+        });
+        grid.appendChild(card);
       });
-      cards = [...grid.querySelectorAll(".product-card")];
       filterProducts();
     }
+
     function filterProducts() {
       const query = document.getElementById("search-input").value.trim().toLowerCase();
-      const price = document.getElementById("price-filter").value;
+      const priceFilter = document.getElementById("price-filter").value;
       let visible = 0;
-      cards.forEach(card => {
-        const value = Number(card.dataset.price);
-        const hasPrice = card.dataset.price !== "";
+
+      [...grid.querySelectorAll(".product-card")].forEach(card => {
         const matchesCategory = activeCategory === "All" || card.dataset.category === activeCategory;
-        const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
-        const matchesPrice = price === "all" || (hasPrice && ((price === "under500" && value < 500) || (price === "500to1000" && value >= 500 && value <= 1000) || (price === "over1000" && value > 1000)));
+        const text = card.textContent.toLowerCase();
+        const value = card.dataset.price === "" ? null : Number(card.dataset.price);
+        const matchesSearch = !query || text.includes(query);
+        const matchesPrice = priceFilter === "all" ||
+          (value !== null && priceFilter === "under500" && value < 500) ||
+          (value !== null && priceFilter === "500to1000" && value >= 500 && value <= 1000) ||
+          (value !== null && priceFilter === "over1000" && value > 1000);
         const show = matchesCategory && matchesSearch && matchesPrice;
         card.classList.toggle("hidden", !show);
         if (show) visible++;
       });
+
       count.textContent = visible + (visible === 1 ? " Item Displayed" : " Items Displayed");
       noResults.classList.toggle("hidden", visible !== 0);
     }
+
     document.getElementById("search-input").addEventListener("input", filterProducts);
     document.getElementById("price-filter").addEventListener("change", filterProducts);
 
@@ -413,9 +443,11 @@
       menuButton.setAttribute("aria-expanded", String(!isHidden));
     }
     menuButton.addEventListener("click", toggleMobileNav);
-    document.querySelectorAll(".mobile-nav-link").forEach(link => link.addEventListener("click", () => {
-      if (!mobileNav.classList.contains("hidden")) toggleMobileNav();
-    }));
+    document.querySelectorAll(".mobile-nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        if (!mobileNav.classList.contains("hidden")) toggleMobileNav();
+      });
+    });
 
     document.getElementById("custom-form").addEventListener("submit", function(event) {
       event.preventDefault();
@@ -429,15 +461,16 @@
         return;
       }
       const targetNumber = "918767465714";
-      const message = `*New Custom Order Request*\\n\\n*Name:* ${name}\\n*Phone / WhatsApp:* ${phone}\\n*Project Details:* ${details}`;
-      window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, "_blank");
+      const message = `*New Custom Order Request*\n\n*Name:* ${name}\n*Phone / WhatsApp:* ${phone}\n*Project Details:* ${details}`;
       statusElement.textContent = "Redirecting to WhatsApp...";
       statusElement.className = "mt-3 text-xs font-medium text-green-600";
+      window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     });
 
     function openProductModal(product) {
       activeProduct = product;
-      currentImages = product.images || [];
+      currentImages = (product.images || []).filter(Boolean);
+      if (!currentImages.length) currentImages = [""];
       currentSlideIndex = 0;
       document.getElementById("modal-title").textContent = product.title;
       document.getElementById("modal-price").textContent = product.price;
@@ -453,33 +486,49 @@
     function handleBackdropClick(event) {
       if (event.target === document.getElementById("product-modal")) closeProductModal();
     }
-    document.addEventListener("keydown", event => { if (event.key === "Escape") closeProductModal(); });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeProductModal();
+    });
     function updateSlideshow() {
-      document.getElementById("modal-slideshow-image").src = currentImages[currentSlideIndex] || "";
+      document.getElementById("modal-slideshow-image").src = currentImages[currentSlideIndex];
       document.getElementById("modal-slide-indicator").textContent = `${currentSlideIndex + 1} / ${currentImages.length}`;
     }
-    function nextSlide() { if (currentImages.length) { currentSlideIndex = (currentSlideIndex + 1) % currentImages.length; updateSlideshow(); } }
-    function prevSlide() { if (currentImages.length) { currentSlideIndex = (currentSlideIndex - 1 + currentImages.length) % currentImages.length; updateSlideshow(); } }
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % currentImages.length;
+      updateSlideshow();
+    }
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + currentImages.length) % currentImages.length;
+      updateSlideshow();
+    }
     function inquireOnWhatsApp() {
       if (!activeProduct) return;
-      const message = `Hello! I would like to inquire about the following product:\\n\\n*Product:* ${activeProduct.title}\\n*Price:* ${activeProduct.price}\\n*Description:* ${activeProduct.description}`;
-      window.open(`https://wa.me/918767465714?text=${encodeURIComponent(message)}`, "_blank");
+      const phoneNumber = "918767465714";
+      const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     }
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      if (window.lucide) lucide.createIcons();
+    async function loadCatalogue() {
       try {
-        const response = await fetch("catalog.json?v=" + Date.now(), {cache:"no-store"});
-        if (!response.ok) throw new Error("Could not load the product catalogue.");
-        const catalog = await response.json();
-        renderCategories(catalog.categories || []);
-        renderProducts(catalog.products || []);
+        const [productResponse, categoryResponse] = await Promise.all([
+          fetch("products.json?v=" + Date.now(), { cache: "no-store" }),
+          fetch("categories.json?v=" + Date.now(), { cache: "no-store" })
+        ]);
+        if (!productResponse.ok || !categoryResponse.ok) throw new Error("Could not load the catalogue files.");
+        products = await productResponse.json();
+        const categories = await categoryResponse.json();
+        renderCategories(categories);
+        renderProducts();
       } catch (error) {
-        count.textContent = "Catalogue temporarily unavailable";
-        noResults.textContent = "Please refresh the page in a moment.";
-        noResults.classList.remove("hidden");
+        grid.innerHTML = '<p class="col-span-full py-8 text-center text-sm text-red-600">The product catalogue could not be loaded. Please refresh the page.</p>';
+        count.textContent = "Catalogue unavailable";
         console.error(error);
       }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) lucide.createIcons();
+      loadCatalogue();
     });
   </script>
 </body>

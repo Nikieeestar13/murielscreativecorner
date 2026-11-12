@@ -1,0 +1,10 @@
+name = "muriels-creative-corner-admin"
+main = "index.js"
+compatibility_date = "2026-11-12"
+
+[vars]
+GITHUB_OWNER = "YOUR_GITHUB_USERNAME"
+GITHUB_REPO = "YOUR_REPOSITORY_NAME"
+GITHUB_BRANCH = "main"
+ADMIN_USERNAME = "muriel"
+ALLOWED_ORIGIN = "https://YOUR_GITHUB_USERNAME.github.io"

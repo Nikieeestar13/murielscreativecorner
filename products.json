@@ -1,0 +1,626 @@
+[
+  {
+    "id": "legacy-001-doll",
+    "name": "Doll",
+    "category": "Amigurumi",
+    "price": 4500,
+    "description": "A tiny, hand-stitched companion ready to bring big personality to your shelf.",
+    "images": [
+      "doll2.webp",
+      "doll1.webp",
+      "doll3.webp"
+    ]
+  },
+  {
+    "id": "legacy-002-chick",
+    "name": "Chick",
+    "category": "Amigurumi",
+    "price": 630,
+    "description": "Dressed to impress in its tiny top hat.",
+    "images": [
+      "chick.webp",
+      "chick1.webp",
+      "chick2.webp"
+    ]
+  },
+  {
+    "id": "legacy-003-bunny-buddies",
+    "name": "Bunny Buddies",
+    "category": "Keychains",
+    "price": 650,
+    "description": "Double the ears, double the fun",
+    "images": [
+      "tb4.webp",
+      "tb3.jpg",
+      "tb2.webp"
+    ]
+  },
+  {
+    "id": "legacy-004-spidey",
+    "name": "Spidey",
+    "category": "Amigurumi",
+    "price": 420,
+    "description": "With great power comes great cute-ness!",
+    "images": [
+      "spidey.webp",
+      "spidey.webp",
+      "spidey.webp"
+    ]
+  },
+  {
+    "id": "legacy-005-cow",
+    "name": "Cow",
+    "category": "Amigurumi",
+    "price": 630,
+    "description": "An un-moo-lievably soft barnyard buddy!.",
+    "images": [
+      "cow1.webp",
+      "cow2.webp",
+      "cow3.webp"
+    ]
+  },
+  {
+    "id": "legacy-006-christmas-reindeer",
+    "name": "Christmas Reindeer",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Prancing straight into your holiday cheer!",
+    "images": [
+      "creindeer3.webp",
+      "creindeer2.webp",
+      "creindeer1.webp"
+    ]
+  },
+  {
+    "id": "legacy-007-bouquet-of-yarn-goodness",
+    "name": "Bouquet of yarn Goodness",
+    "category": "Flowers",
+    "price": 3200,
+    "description": "An everlasting floral bundle",
+    "images": [
+      "bouquet2.webp",
+      "bouquet3.webp",
+      "bouquet3.webp"
+    ]
+  },
+  {
+    "id": "legacy-008-kittens",
+    "name": "Kittens",
+    "category": "Keychains",
+    "price": 180,
+    "description": "A purr-fect trio!",
+    "images": [
+      "kitty1.webp",
+      "kitty2.webp",
+      "kitty3.webp"
+    ]
+  },
+  {
+    "id": "legacy-009-bunny-plushie",
+    "name": "Bunny Plushie",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Skipping into your heart with a bow and a bounce!",
+    "images": [
+      "rabbit3.webp",
+      "rabbit1.webp",
+      "rabbit2.webp"
+    ]
+  },
+  {
+    "id": "legacy-010-sheep-with-overalls",
+    "name": "Sheep with overalls",
+    "category": "Amigurumi",
+    "price": 580,
+    "description": "Fluffy, woolly, and 100% cuddle-approved",
+    "images": [
+      "sheep1.webp",
+      "sheep2.webp",
+      "sheep2.webp"
+    ]
+  },
+  {
+    "id": "legacy-011-snail",
+    "name": "Snail",
+    "category": "Amigurumi",
+    "price": 340,
+    "description": "Slow down and soak up the cute!",
+    "images": [
+      "snail1.webp",
+      "snail2.webp",
+      "snail2.webp"
+    ]
+  },
+  {
+    "id": "legacy-012-baby-shark",
+    "name": "Baby Shark",
+    "category": "Amigurumi",
+    "price": 340,
+    "description": "Cutest little shark in the sea",
+    "images": [
+      "fish1.webp",
+      "fish3.webp",
+      "fish2.webp"
+    ]
+  },
+  {
+    "id": "legacy-013-sunflower-keychain",
+    "name": "Sunflower keychain",
+    "category": "Keychains",
+    "price": null,
+    "description": "A permanent pop of summertime warmth",
+    "images": [
+      "sf1.jpg",
+      "sf2.jpg",
+      "sf2.jpg"
+    ]
+  },
+  {
+    "id": "legacy-014-teddy",
+    "name": "Teddy",
+    "category": "Amigurumi",
+    "price": 1800,
+    "description": "Bear-y ready for bedtime stories!",
+    "images": [
+      "teddy3.webp",
+      "teddy2.webp",
+      "teddy1.webp"
+    ]
+  },
+  {
+    "id": "legacy-015-letter-keychains",
+    "name": "Letter Keychains",
+    "category": "Keychains",
+    "price": 800,
+    "description": "Personalised letter keychains",
+    "images": [
+      "letter4.webp",
+      "a.webp",
+      "r.webp"
+    ]
+  },
+  {
+    "id": "legacy-016-lily",
+    "name": "Lily",
+    "category": "Flowers",
+    "price": 400,
+    "description": "Pure elegance that never wilts!",
+    "images": [
+      "lily.webp",
+      "lily3.webp",
+      "lily2.webp"
+    ]
+  },
+  {
+    "id": "legacy-017-giraffe",
+    "name": "Giraffe",
+    "category": "Amigurumi",
+    "price": 380,
+    "description": "You're giraffe-ing me crazy!",
+    "images": [
+      "giraffe1.webp",
+      "giraffe2.webp",
+      "giraffe3.webp"
+    ]
+  },
+  {
+    "id": "legacy-018-bumble-bee",
+    "name": "Bumble Bee",
+    "category": "Keychains",
+    "price": 140,
+    "description": "What’s all the buzz about? This little worker bee is ready to fly straight into your heart!",
+    "images": [
+      "bee1.webp",
+      "bee2.webp",
+      "bee2.webp"
+    ]
+  },
+  {
+    "id": "legacy-019-elephant-keychain",
+    "name": "Elephant Keychain",
+    "category": "Keychains",
+    "price": null,
+    "description": "Trunks up, keys found, and good luck wherever you go!",
+    "images": [
+      "elekey.webp",
+      "elekey.webp",
+      "elekey.webp"
+    ]
+  },
+  {
+    "id": "legacy-020-mermaid",
+    "name": "Mermaid",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Quitting my daydream to go be a mermaid.",
+    "images": [
+      "mermaid1.webp",
+      "mermaid2.webp",
+      "mermaid2.webp"
+    ]
+  },
+  {
+    "id": "legacy-021-penguin-keychain",
+    "name": "Penguin keychain",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Waddling into your daily routine to keep your keys safe and your heart warm!",
+    "images": [
+      "pengu.webp",
+      "pengu.webp",
+      "pengu.webp"
+    ]
+  },
+  {
+    "id": "legacy-022-remy-ratatoullie",
+    "name": "Remy (Ratatoullie)",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Little Chef is officially in the kitchen!",
+    "images": [
+      "remy1.webp",
+      "remy2.webp",
+      "remy2.webp"
+    ]
+  },
+  {
+    "id": "legacy-023-tiny-elephant",
+    "name": "Tiny Elephant",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "A pocket-sized reminder to always stand tall (even if you are small)",
+    "images": [
+      "ele1.webp",
+      "ele1.webp",
+      "ele1.webp"
+    ]
+  },
+  {
+    "id": "legacy-024-donkey",
+    "name": "Donkey",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "A zero-maintenance farm friend!",
+    "images": [
+      "donkey.webp",
+      "donkey.webp",
+      "donkey.webp"
+    ]
+  },
+  {
+    "id": "legacy-025-custom-name-sign",
+    "name": "Custom name sign",
+    "category": "Accessories",
+    "price": null,
+    "description": "A little personalised magic for the wall",
+    "images": [
+      "declan.webp",
+      "declan2.webp",
+      "declan2.webp"
+    ]
+  },
+  {
+    "id": "legacy-026-daffodil",
+    "name": "Daffodil",
+    "category": "Flowers",
+    "price": null,
+    "description": "Freshly picked from the yarn garden!",
+    "images": [
+      "daff.webp",
+      "daff.webp",
+      "daff.webp"
+    ]
+  },
+  {
+    "id": "legacy-027-koala",
+    "name": "Koala",
+    "category": "Amigurumi",
+    "price": 620,
+    "description": "You have all the necessary koala-fications to be my bestie!",
+    "images": [
+      "koala1.webp",
+      "koala2.webp",
+      "koala2.webp"
+    ]
+  },
+  {
+    "id": "legacy-028-ferns",
+    "name": "Ferns",
+    "category": "Flowers",
+    "price": null,
+    "description": "Soft green stitches, delicate textured leaves",
+    "images": [
+      "l2.jpg",
+      "l1.webp",
+      "l3.jpg"
+    ]
+  },
+  {
+    "id": "legacy-029-happy-feet",
+    "name": "Happy feet",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Waddling my way over",
+    "images": [
+      "hf2.webp",
+      "hf1.webp",
+      "hf3.webp"
+    ]
+  },
+  {
+    "id": "legacy-030-holy-rosary",
+    "name": "Holy Rosary",
+    "category": "Amigurumi",
+    "price": 2800,
+    "description": "Threaded with grace!",
+    "images": [
+      "rosary.webp",
+      "rosary2.jpg",
+      "rosary1.webp"
+    ]
+  },
+  {
+    "id": "legacy-031-flower-stalk",
+    "name": "Flower Stalk",
+    "category": "Flowers",
+    "price": null,
+    "description": "A handcrafted floral stem made to brighten your day",
+    "images": [
+      "f1.webp",
+      "f2.webp",
+      "f2.webp"
+    ]
+  },
+  {
+    "id": "legacy-032-puppy",
+    "name": "Puppy",
+    "category": "Amigurumi",
+    "price": 640,
+    "description": "Paw-sitively adorable!",
+    "images": [
+      "pup1.webp",
+      "pup2.webp",
+      "pup3.webp"
+    ]
+  },
+  {
+    "id": "legacy-033-kaleidocat",
+    "name": "Kaleidocat",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Talk about yarn-tastic color!",
+    "images": [
+      "Kaleidocat.webp",
+      "Kaleidocat1.webp",
+      "Kaleidocat1.webp"
+    ]
+  },
+  {
+    "id": "legacy-034-beanie",
+    "name": "Beanie",
+    "category": "Accessories",
+    "price": null,
+    "description": "Hat hair, do not care.",
+    "images": [
+      "beanie.webp",
+      "beanie1.webp",
+      "beanie1.webp"
+    ]
+  },
+  {
+    "id": "legacy-035-squirrel",
+    "name": "Squirrel",
+    "category": "Amigurumi",
+    "price": 420,
+    "description": "Going nuts over this little woodland friend",
+    "images": [
+      "squi2.webp",
+      "squi1.webp",
+      "squi3.webp"
+    ]
+  },
+  {
+    "id": "legacy-036-flower-keychain",
+    "name": "Flower Keychain",
+    "category": "Keychains",
+    "price": null,
+    "description": "Proof that good things come in small packages!",
+    "images": [
+      "fk1.jpg",
+      "fk2.jpg",
+      "fk2.jpg"
+    ]
+  },
+  {
+    "id": "legacy-037-black-cat",
+    "name": "Black Cat",
+    "category": "Amigurumi",
+    "price": 580,
+    "description": "Feelin' feline",
+    "images": [
+      "cat3.webp",
+      "cat2.webp",
+      "cat1.webp"
+    ]
+  },
+  {
+    "id": "legacy-038-teeny-turtles",
+    "name": "Teeny Turtles",
+    "category": "Keychains",
+    "price": 280,
+    "description": "You’re turtle-y meant to take these home!",
+    "images": [
+      "yturtle2.webp",
+      "yturtle4.webp",
+      "yturtle1.webp"
+    ]
+  },
+  {
+    "id": "legacy-039-bow",
+    "name": "Bow",
+    "category": "Keychains",
+    "price": 140,
+    "description": "Tied with love and ready to charm!",
+    "images": [
+      "bow.webp",
+      "bow.webp",
+      "bow.webp"
+    ]
+  },
+  {
+    "id": "legacy-040-pocket-sun",
+    "name": "Pocket Sun",
+    "category": "Keychains",
+    "price": 160,
+    "description": "I've got that sunshine in my pocket",
+    "images": [
+      "sun3.webp",
+      "sun1.webp",
+      "sun2.webp"
+    ]
+  },
+  {
+    "id": "legacy-041-penguin",
+    "name": "Penguin",
+    "category": "Keychains",
+    "price": 320,
+    "description": "What a distinguished gentleman",
+    "images": [
+      "penguin.webp",
+      "penguin1.webp",
+      "penguin1.webp"
+    ]
+  },
+  {
+    "id": "legacy-042-bears",
+    "name": "Bears",
+    "category": "Amigurumi",
+    "price": 580,
+    "description": "Un-bear-ably cute!",
+    "images": [
+      "bears.jpg",
+      "bears.jpg",
+      "bears.jpg"
+    ]
+  },
+  {
+    "id": "legacy-043-calla-lily",
+    "name": "Calla Lily",
+    "category": "Flowers",
+    "price": null,
+    "description": "Pure elegance in every stitch!",
+    "images": [
+      "lilyt.webp",
+      "lilyt.webp",
+      "lilyt.webp"
+    ]
+  },
+  {
+    "id": "legacy-044-lemon",
+    "name": "Lemon",
+    "category": "Keychains",
+    "price": 180,
+    "description": "When life gives you lemons... keep them soft and cuddly!",
+    "images": [
+      "lemon1.webp",
+      "lemon3.webp",
+      "lemon2.webp"
+    ]
+  },
+  {
+    "id": "legacy-045-tulip",
+    "name": "Tulip",
+    "category": "Flowers",
+    "price": null,
+    "description": "A cozy tulip that stays bright and perky 365 days a year.",
+    "images": [
+      "tulip.webp",
+      "tulip1.jpg",
+      "tulip1.jpg"
+    ]
+  },
+  {
+    "id": "legacy-046-hippo",
+    "name": "Hippo",
+    "category": "Amigurumi",
+    "price": 630,
+    "description": "She's beauty, she's grace, she's got a super soft, plushy face!",
+    "images": [
+      "hippo3.webp",
+      "hippo2.webp",
+      "hippo1.jpg"
+    ]
+  },
+  {
+    "id": "legacy-047-piggy",
+    "name": "Piggy",
+    "category": "Amigurumi",
+    "price": 360,
+    "description": "A tiny pink buddy ready to add a pop of piggy perfection to your collection.",
+    "images": [
+      "pig1.webp",
+      "pig2.webp",
+      "pig2.webp"
+    ]
+  },
+  {
+    "id": "legacy-048-turtle",
+    "name": "Turtle",
+    "category": "Amigurumi",
+    "price": 870,
+    "description": "Slowly, surely, and totally turtle-y adorable!",
+    "images": [
+      "pturtle1.webp",
+      "pturtle2.webp",
+      "pturtle3.webp"
+    ]
+  },
+  {
+    "id": "legacy-049-tiny-cow",
+    "name": "Tiny Cow",
+    "category": "Amigurumi",
+    "price": 320,
+    "description": "Holy cow, that's cute!",
+    "images": [
+      "minicow1.webp",
+      "minicow2.webp",
+      "minicow2.webp"
+    ]
+  },
+  {
+    "id": "legacy-050-fox",
+    "name": "Fox",
+    "category": "Amigurumi",
+    "price": 580,
+    "description": "Totally fox-y!",
+    "images": [
+      "fox3.webp",
+      "fox2.webp",
+      "fox4.webp"
+    ]
+  },
+  {
+    "id": "legacy-051-elephant",
+    "name": "Elephant",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Phant-astic in every stitch!",
+    "images": [
+      "elephant1.webp",
+      "elephant2.webp",
+      "elephant3.webp"
+    ]
+  },
+  {
+    "id": "legacy-052-reindeer",
+    "name": "Reindeer",
+    "category": "Amigurumi",
+    "price": null,
+    "description": "Featuring tiny antlers and a cute button nose.",
+    "images": [
+      "deer2.webp",
+      "deer1.webp",
+      "deer1.webp"
+    ]
+  }
+]
