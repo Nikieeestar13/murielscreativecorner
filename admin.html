@@ -65,7 +65,17 @@
             <div class="grid sm:grid-cols-2 gap-4">
               <div><label class="block text-xs font-semibold mb-1" for="product-name">Product name *</label><input id="product-name" class="field" maxlength="100" required></div>
               <div><label class="block text-xs font-semibold mb-1" for="product-category">Category *</label><select id="product-category" class="field" required></select></div>
-              <div><label class="block text-xs font-semibold mb-1" for="product-price">Price (INR) *</label><input id="product-price" class="field" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 450" required></div>
+              <div class="space-y-2">
+                <label class="block text-xs font-semibold mb-1" for="price-type">Price option *</label>
+                <select id="price-type" class="field" required>
+                  <option value="numeric">Numerical price</option>
+                  <option value="request">Price on request</option>
+                </select>
+                <div id="numeric-price-wrap">
+                  <label class="block text-xs font-semibold mb-1" for="product-price">Price (INR) *</label>
+                  <input id="product-price" class="field" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 450">
+                </div>
+              </div>
               <div class="sm:col-span-2"><label class="block text-xs font-semibold mb-1" for="product-description">Description *</label><textarea id="product-description" class="field min-h-24" rows="3" maxlength="1000" required></textarea></div>
             </div>
             <div>
