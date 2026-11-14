@@ -1,17 +1,5 @@
 [
   {
-    "id": "ddd42776-c1de-4156-a3d2-0949757fd0e4",
-    "name": "test",
-    "category": "Amigurumi",
-    "price": 230,
-    "description": "testing",
-    "images": [
-      "images/products/2293d72a-86af-4995-9493-1074687a32a8.webp",
-      "images/products/c3ef859a-6dea-44fd-afa6-a257ee0073cd.webp",
-      "images/products/53e322bc-7282-4c28-9e92-4dd9884e2dba.webp"
-    ]
-  },
-  {
     "id": "legacy-001-doll",
     "name": "Doll",
     "category": "Amigurumi",
