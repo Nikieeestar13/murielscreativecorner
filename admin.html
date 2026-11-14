@@ -57,7 +57,7 @@
       <section id="products-tab" class="space-y-5">
         <div class="panel p-4 sm:p-6">
           <div class="flex items-center justify-between gap-3 mb-4">
-            <div><h2 id="form-heading" class="serif text-2xl">Add New Product</h2><p class="text-xs text-[#66625D] mt-1">All three product images are required.</p></div>
+            <div><h2 id="form-heading" class="serif text-2xl">Add New Product</h2><p class="text-xs text-[#66625D] mt-1">Add at least one image; you can upload up to three.</p></div>
             <button id="cancel-edit" class="hidden btn btn-secondary">Cancel edit</button>
           </div>
           <form id="product-form" class="space-y-4">
@@ -80,11 +80,11 @@
             </div>
             <div>
               <h3 class="text-sm font-semibold mb-2">Product images</h3>
-              <p class="text-xs text-[#66625D] mb-3">Upload up to three images. Each image must be smaller than 700 KB. On existing products, leave a file empty to keep its current image.</p>
+              <p class="text-xs text-[#66625D] mb-3">Upload 1 to 3 images. Each image must be smaller than 700 KB. When editing, leave a file empty to keep its current image.</p>
               <div class="grid sm:grid-cols-3 gap-4">
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-0">Image 1 *</label><input id="image-file-0" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-0" class="preview" alt="Image 1 preview"><p id="image-status-0" class="text-[11px]" aria-live="polite"></p></div>
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-1">Image 2 *</label><input id="image-file-1" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-1" class="preview" alt="Image 2 preview"><p id="image-status-1" class="text-[11px]" aria-live="polite"></p></div>
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-2">Image 3 *</label><input id="image-file-2" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-2" class="preview" alt="Image 3 preview"><p id="image-status-2" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-0">Image 1 (required)</label><input id="image-file-0" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-0" class="preview" alt="Image 1 preview"><p id="image-status-0" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-1">Image 2 (optional)</label><input id="image-file-1" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-1" class="preview" alt="Image 2 preview"><p id="image-status-1" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-2">Image 3 (optional)</label><input id="image-file-2" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-2" class="preview" alt="Image 3 preview"><p id="image-status-2" class="text-[11px]" aria-live="polite"></p></div>
               </div>
             </div>
             <p id="product-status" class="text-xs" aria-live="polite"></p>
