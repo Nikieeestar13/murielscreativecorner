@@ -70,11 +70,11 @@
             </div>
             <div>
               <h3 class="text-sm font-semibold mb-2">Product images</h3>
-              <p class="text-xs text-[#66625D] mb-3">Paste direct image URLs from GitHub (raw-content or GitHub Pages). Each image must load publicly.</p>
+              <p class="text-xs text-[#66625D] mb-3">Upload up to three images. Each image must be smaller than 700 KB. On existing products, leave a file empty to keep its current image.</p>
               <div class="grid sm:grid-cols-3 gap-4">
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-0">Image 1 URL *</label><input id="image-0" class="field image-url" type="url" placeholder="https://..." required><img id="preview-0" class="preview" alt="Image 1 preview"><p id="image-status-0" class="text-[11px]" aria-live="polite"></p></div>
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-1">Image 2 URL *</label><input id="image-1" class="field image-url" type="url" placeholder="https://..." required><img id="preview-1" class="preview" alt="Image 2 preview"><p id="image-status-1" class="text-[11px]" aria-live="polite"></p></div>
-                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-2">Image 3 URL *</label><input id="image-2" class="field image-url" type="url" placeholder="https://..." required><img id="preview-2" class="preview" alt="Image 3 preview"><p id="image-status-2" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-0">Image 1 *</label><input id="image-file-0" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-0" class="preview" alt="Image 1 preview"><p id="image-status-0" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-1">Image 2 *</label><input id="image-file-1" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-1" class="preview" alt="Image 2 preview"><p id="image-status-1" class="text-[11px]" aria-live="polite"></p></div>
+                <div class="space-y-2"><label class="block text-xs font-semibold" for="image-file-2">Image 3 *</label><input id="image-file-2" class="field image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><img id="preview-2" class="preview" alt="Image 3 preview"><p id="image-status-2" class="text-[11px]" aria-live="polite"></p></div>
               </div>
             </div>
             <p id="product-status" class="text-xs" aria-live="polite"></p>
