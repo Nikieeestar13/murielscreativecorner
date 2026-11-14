@@ -300,10 +300,10 @@
         <img id="modal-slideshow-image" class="w-full h-full object-cover transition-all duration-300" src="" alt="Product view">
         
         <!-- Controls -->
-        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
+        <button id="prev-slide" onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
           &#10094;
         </button>
-        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
+        <button id="next-slide" onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-8 h-8 rounded-full shadow-md flex items-center justify-center font-bold text-sm">
           &#10095;
         </button>
 
@@ -476,6 +476,10 @@
       document.getElementById("modal-price").textContent = product.price;
       document.getElementById("modal-description").textContent = product.description;
       updateSlideshow();
+      const showSlideControls = currentImages.length > 1;
+      document.getElementById("prev-slide").classList.toggle("hidden", !showSlideControls);
+      document.getElementById("next-slide").classList.toggle("hidden", !showSlideControls);
+      document.getElementById("modal-slide-indicator").classList.toggle("hidden", !showSlideControls);
       document.getElementById("product-modal").classList.remove("hidden");
       document.body.style.overflow = "hidden";
     }
