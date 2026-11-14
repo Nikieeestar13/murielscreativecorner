@@ -467,7 +467,10 @@
 
     function openProductModal(product) {
       activeProduct = product;
-      currentImages = (product.images || []).filter(Boolean);
+      // Remove blank entries and duplicate image paths so controls match the actual unique images.
+      currentImages = Array.from(new Set((product.images || [])
+        .filter(image => typeof image === "string" && image.trim())
+        .map(image => image.trim())));
       if (!currentImages.length) currentImages = [""];
       currentSlideIndex = 0;
       document.getElementById("modal-title").textContent = product.title;
