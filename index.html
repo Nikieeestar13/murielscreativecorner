@@ -307,10 +307,8 @@
           &#10095;
         </button>
 
-        <!-- Slide Indicator -->
-        <div id="modal-slide-indicator" class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[10px] px-2.5 py-0.5 rounded-full">
-          1 / 3
-        </div>
+        <!-- Dynamic slide options -->
+        <div id="modal-slide-indicator" class="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5"></div>
       </div>
 
       <!-- Price & Description -->
@@ -475,11 +473,21 @@
       document.getElementById("modal-title").textContent = product.title;
       document.getElementById("modal-price").textContent = product.price;
       document.getElementById("modal-description").textContent = product.description;
-      updateSlideshow();
       const showSlideControls = currentImages.length > 1;
       document.getElementById("prev-slide").classList.toggle("hidden", !showSlideControls);
       document.getElementById("next-slide").classList.toggle("hidden", !showSlideControls);
-      document.getElementById("modal-slide-indicator").classList.toggle("hidden", !showSlideControls);
+      const indicator = document.getElementById("modal-slide-indicator");
+      indicator.innerHTML = showSlideControls
+        ? currentImages.map((_, index) => `<button type="button" class="slide-option w-2 h-2 rounded-full border border-white/90 transition" aria-label="Show image ${index + 1}" data-slide="${index}"></button>`).join("")
+        : "";
+      indicator.classList.toggle("hidden", !showSlideControls);
+      indicator.querySelectorAll(".slide-option").forEach(button => {
+        button.addEventListener("click", () => {
+          currentSlideIndex = Number(button.dataset.slide);
+          updateSlideshow();
+        });
+      });
+      updateSlideshow();
       document.getElementById("product-modal").classList.remove("hidden");
       document.body.style.overflow = "hidden";
     }
@@ -495,7 +503,11 @@
     });
     function updateSlideshow() {
       document.getElementById("modal-slideshow-image").src = currentImages[currentSlideIndex];
-      document.getElementById("modal-slide-indicator").textContent = `${currentSlideIndex + 1} / ${currentImages.length}`;
+      document.querySelectorAll("#modal-slide-indicator .slide-option").forEach((button, index) => {
+        button.classList.toggle("bg-white", index === currentSlideIndex);
+        button.classList.toggle("bg-white/40", index !== currentSlideIndex);
+        button.setAttribute("aria-current", index === currentSlideIndex ? "true" : "false");
+      });
     }
     function nextSlide() {
       currentSlideIndex = (currentSlideIndex + 1) % currentImages.length;
