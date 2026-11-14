@@ -87,6 +87,40 @@ async function githubWrite(path, value, message, env) {
   if (!response.ok) throw new Error(`GitHub could not save the file (${response.status}).`);
   return response.json();
 }
+async function githubUploadImage(mimeType, base64, env) {
+  const allowed = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp",
+    "image/gif": "gif"
+  };
+  if (!allowed[mimeType]) throw new Error("Only JPG, PNG, WEBP and GIF images are allowed.");
+  if (typeof base64 !== "string" || !/^[A-Za-z0-9+/]+={0,2}$/.test(base64)) throw new Error("Invalid image data.");
+  const padding = base64.endsWith("==") ? 2 : base64.endsWith("=") ? 1 : 0;
+  const byteLength = Math.floor(base64.length * 3 / 4) - padding;
+  if (byteLength <= 0 || byteLength >= 700 * 1024) throw new Error("Each image must be smaller than 700 KB.");
+  const path = `images/products/${crypto.randomUUID()}.${allowed[mimeType]}`;
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${path}`;
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Authorization": `Bearer ${env.GITHUB_TOKEN}`,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "Muriels-Creative-Corner-Admin",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "Upload product image via admin dashboard",
+      content: base64,
+      branch: env.GITHUB_BRANCH
+    })
+  });
+  if (response.status === 409 || response.status === 422) throw new Error("GitHub could not create the image file. Please try again.");
+  if (!response.ok) throw new Error(`GitHub image upload failed (${response.status}).`);
+  return path;
+}
+
 function constantTimeEqual(a, b) {
   const left = encoder.encode(String(a));
   const right = encoder.encode(String(b));
@@ -139,6 +173,12 @@ export default {
         return json({ok:true},200,env,{"Set-Cookie":cookieHeader("",0)});
       }
       if (!await validSession(request,env)) return json({error:"Please log in to continue."},401,env);
+
+      if (url.pathname === "/api/upload-image" && request.method === "POST") {
+        const body = await request.json();
+        const path = await githubUploadImage(body.mimeType, body.base64, env);
+        return json({ok:true,path},201,env);
+      }
 
       if (url.pathname === "/api/products" && request.method === "GET") {
         const data = await githubRead("products.json",env);
