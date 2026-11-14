@@ -93,7 +93,7 @@
     $("product-description").value = p.description;
     [0,1,2].forEach(i => {
       $("image-file-" + i).value = "";
-      $("preview-" + i).src = p.images[i];
+      if (p.images[i]) $("preview-" + i).src = p.images[i]; else $("preview-" + i).removeAttribute("src");
       message("image-status-" + i, "Current image kept unless you choose a replacement.", "success");
     });
     $("form-heading").textContent = "Edit Product";
@@ -144,12 +144,12 @@
       const existingProduct = existingId ? products.find(p => p.id === existingId) : null;
       if (existingId && !existingProduct) throw new Error("This product no longer exists. Refresh and try again.");
       const selectedFiles = [0,1,2].map(i => $("image-file-" + i).files[0] || null);
-      if (!existingId && selectedFiles.some(file => !file)) throw new Error("Please choose all three product images.");
+      if (!existingId && selectedFiles.every(file => !file)) throw new Error("Please choose at least one product image.");
       for (const file of selectedFiles) {
         if (file && !ALLOWED_IMAGE_TYPES.includes(file.type)) throw new Error("Use JPG, PNG, WEBP or GIF images.");
         if (file && file.size >= MAX_IMAGE_BYTES) throw new Error("Each image must be smaller than 700 KB.");
       }
-      const imagePaths = existingProduct ? [...existingProduct.images] : [null,null,null];
+      const imagePaths = existingProduct ? [...existingProduct.images] : [];
       for (let i = 0; i < 3; i++) {
         if (selectedFiles[i]) {
           message("image-status-" + i, "Uploading image to GitHub...", "info");
@@ -157,13 +157,15 @@
           message("image-status-" + i, "Uploaded to GitHub.", "success");
         }
       }
+      const finalImagePaths = imagePaths.filter(Boolean);
+      if (finalImagePaths.length < 1 || finalImagePaths.length > 3) throw new Error("A product must have between 1 and 3 images.");
       const product = {
         id: existingId || crypto.randomUUID(),
         name: $("product-name").value.trim(),
         category: $("product-category").value,
         price: $("price-type").value === "request" ? null : Number($("product-price").value),
         description: $("product-description").value.trim(),
-        images: imagePaths
+        images: finalImagePaths
       };
       if (!product.name || !product.category || (product.price !== null && (!Number.isFinite(product.price) || product.price < 0)) || !product.description) {
         throw new Error("Complete all required fields and enter a valid price.");
