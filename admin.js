@@ -3,7 +3,8 @@
   const $ = id => document.getElementById(id);
   let products = [];
   let categories = [];
-  let imageChecks = [false, false, false];
+  const MAX_IMAGE_BYTES = 700 * 1024;
+  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
   function message(id, text, kind = "info") {
     const el = $(id); el.textContent = text;
@@ -69,7 +70,6 @@
     $("form-heading").textContent = "Add New Product";
     $("save-product").textContent = "Add Product";
     $("cancel-edit").classList.add("hidden");
-    imageChecks = [false, false, false];
     [0,1,2].forEach(i => { $("preview-" + i).removeAttribute("src"); $("image-status-" + i).textContent = ""; });
     message("product-status", "");
   }
@@ -80,30 +80,47 @@
     $("product-category").value = p.category;
     $("product-price").value = p.price ?? "";
     $("product-description").value = p.description;
-    p.images.forEach((url, i) => { $("image-" + i).value = url; validateImage(i); });
+    [0,1,2].forEach(i => {
+      $("image-file-" + i).value = "";
+      $("preview-" + i).src = p.images[i];
+      message("image-status-" + i, "Current image kept unless you choose a replacement.", "success");
+    });
     $("form-heading").textContent = "Edit Product";
     $("save-product").textContent = "Save Changes";
     $("cancel-edit").classList.remove("hidden");
     $("product-form").scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  async function validateImage(index) {
-    const input = $("image-" + index), url = input.value.trim(), preview = $("preview-" + index);
-    imageChecks[index] = false;
-    if (!url) { preview.removeAttribute("src"); message("image-status-" + index, "Image URL required.", "error"); return false; }
-    try {
-      const parsed = new URL(url, window.location.href);
-      const isRelative = !/^[a-z][a-z0-9+.-]*:/i.test(url);
-      if (!isRelative && parsed.protocol !== "https:") throw new Error("Use an HTTPS image URL.");
-      if (isRelative && (url.startsWith("//") || url.startsWith("javascript:"))) throw new Error("Enter a valid image path.");
-    } catch (e) { preview.removeAttribute("src"); message("image-status-" + index, e.message || "Enter a valid URL.", "error"); return false; }
-    return new Promise(resolve => {
-      const probe = new Image();
-      probe.onload = () => { preview.src = url; imageChecks[index] = true; message("image-status-" + index, "Image loaded.", "success"); resolve(true); };
-      probe.onerror = () => { preview.removeAttribute("src"); message("image-status-" + index, "Could not load this image. Use a direct public image URL.", "error"); resolve(false); };
-      probe.src = url;
+  [0,1,2].forEach(i => $("image-file-" + i).addEventListener("change", () => {
+    const file = $("image-file-" + i).files[0];
+    if (!file) return;
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+      $("image-file-" + i).value = "";
+      message("image-status-" + i, "Use a JPG, PNG, WEBP or GIF image.", "error");
+      return;
+    }
+    if (file.size >= MAX_IMAGE_BYTES) {
+      $("image-file-" + i).value = "";
+      message("image-status-" + i, "Image must be smaller than 700 KB.", "error");
+      return;
+    }
+    $("preview-" + i).src = URL.createObjectURL(file);
+    message("image-status-" + i, (file.size / 1024).toFixed(0) + " KB — ready to upload.", "success");
+  }));
+
+  async function uploadImage(file) {
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error("Could not read the selected image."));
+      reader.readAsDataURL(file);
     });
+    const base64 = String(dataUrl).split(",")[1];
+    const result = await api("/api/upload-image", {
+      method: "POST",
+      body: JSON.stringify({ mimeType: file.type, base64 })
+    });
+    return result.path;
   }
-  [0,1,2].forEach(i => $("image-" + i).addEventListener("change", () => validateImage(i)));
   $("product-form").addEventListener("reset", () => setTimeout(clearForm, 0));
   $("cancel-edit").addEventListener("click", clearForm);
   $("reset-product").addEventListener("click", clearForm);
@@ -112,24 +129,36 @@
     event.preventDefault();
     const save = $("save-product"); save.disabled = true; save.textContent = "Saving...";
     try {
-      const imageResults = await Promise.all([0,1,2].map(validateImage));
-      if (imageResults.some(ok => !ok)) throw new Error("Please provide three working image URLs.");
       const existingId = $("product-id").value;
+      const existingProduct = existingId ? products.find(p => p.id === existingId) : null;
+      if (existingId && !existingProduct) throw new Error("This product no longer exists. Refresh and try again.");
+      const selectedFiles = [0,1,2].map(i => $("image-file-" + i).files[0] || null);
+      if (!existingId && selectedFiles.some(file => !file)) throw new Error("Please choose all three product images.");
+      for (const file of selectedFiles) {
+        if (file && !ALLOWED_IMAGE_TYPES.includes(file.type)) throw new Error("Use JPG, PNG, WEBP or GIF images.");
+        if (file && file.size >= MAX_IMAGE_BYTES) throw new Error("Each image must be smaller than 700 KB.");
+      }
+      const imagePaths = existingProduct ? [...existingProduct.images] : [null,null,null];
+      for (let i = 0; i < 3; i++) {
+        if (selectedFiles[i]) {
+          message("image-status-" + i, "Uploading image to GitHub...", "info");
+          imagePaths[i] = await uploadImage(selectedFiles[i]);
+          message("image-status-" + i, "Uploaded to GitHub.", "success");
+        }
+      }
       const product = {
         id: existingId || crypto.randomUUID(),
         name: $("product-name").value.trim(),
         category: $("product-category").value,
         price: Number($("product-price").value),
         description: $("product-description").value.trim(),
-        images: [0,1,2].map(i => $("image-" + i).value.trim())
+        images: imagePaths
       };
       if (!product.name || !product.category || !Number.isFinite(product.price) || product.price < 0 || !product.description) {
         throw new Error("Complete all required fields and enter a valid numeric price.");
       }
       let updatedProducts;
       if (existingId) {
-        const index = products.findIndex(p => p.id === existingId);
-        if (index < 0) throw new Error("This product no longer exists. Refresh and try again.");
         updatedProducts = products.map(p => p.id === existingId ? product : p);
       } else updatedProducts = [product, ...products];
       await api("/api/products", { method: "PUT", body: JSON.stringify({ products: updatedProducts }) });
