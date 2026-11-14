@@ -140,8 +140,8 @@ function validateProducts(products, categories) {
     // Null prices are allowed only to retain legacy 'pending' products. New dashboard entries require numeric values.
     if (p.price !== null && (!Number.isFinite(p.price) || p.price < 0)) throw new Error(`Invalid price for ${p.name}.`);
     if (typeof p.description !== "string" || p.description.length > 1000) throw new Error(`Invalid description for ${p.name}.`);
-    if (!Array.isArray(p.images) || p.images.length !== 3 || p.images.some(u => typeof u !== "string" || !/^https:\/\//i.test(u) && !/^[a-z0-9._/-]+$/i.test(u))) {
-      throw new Error(`Product "${p.name}" must have exactly three valid image URLs.`);
+    if (!Array.isArray(p.images) || (p.images.length < 1 || p.images.length > 3) || p.images.some(u => typeof u !== "string" || !/^https:\/\//i.test(u) && !/^[a-z0-9._/-]+$/i.test(u))) {
+      throw new Error(`Product "${p.name}" must have between one and three valid image URLs.`);
     }
   }
 }
