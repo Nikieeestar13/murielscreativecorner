@@ -460,7 +460,7 @@
         statusElement.className = "mt-3 text-xs font-medium text-red-500";
         return;
       }
-      const targetNumber = "918767465714";
+      const targetNumber = "918788234001";
       const message = `*New Custom Order Request*\n\n*Name:* ${name}\n*Phone / WhatsApp:* ${phone}\n*Project Details:* ${details}`;
       statusElement.textContent = "Redirecting to WhatsApp...";
       statusElement.className = "mt-3 text-xs font-medium text-green-600";
@@ -503,7 +503,7 @@
     }
     function inquireOnWhatsApp() {
       if (!activeProduct) return;
-      const phoneNumber = "918767465714";
+      const phoneNumber = "918788234001";
       const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
       window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     }
