@@ -64,9 +64,18 @@
     products = p.products; categories = c.categories;
     renderCategoryOptions(); renderProducts();
   }
+  function updatePriceInput() {
+    const isNumeric = $("price-type").value === "numeric";
+    $("numeric-price-wrap").classList.toggle("hidden", !isNumeric);
+    $("product-price").required = isNumeric;
+    $("product-price").disabled = !isNumeric;
+  }
+  $("price-type").addEventListener("change", updatePriceInput);
+
   function clearForm() {
     $("product-id").value = "";
     $("product-form").reset();
+    updatePriceInput();
     $("form-heading").textContent = "Add New Product";
     $("save-product").textContent = "Add Product";
     $("cancel-edit").classList.add("hidden");
@@ -78,7 +87,9 @@
     $("product-id").value = p.id;
     $("product-name").value = p.name;
     $("product-category").value = p.category;
+    $("price-type").value = p.price == null ? "request" : "numeric";
     $("product-price").value = p.price ?? "";
+    updatePriceInput();
     $("product-description").value = p.description;
     [0,1,2].forEach(i => {
       $("image-file-" + i).value = "";
@@ -150,12 +161,12 @@
         id: existingId || crypto.randomUUID(),
         name: $("product-name").value.trim(),
         category: $("product-category").value,
-        price: Number($("product-price").value),
+        price: $("price-type").value === "request" ? null : Number($("product-price").value),
         description: $("product-description").value.trim(),
         images: imagePaths
       };
-      if (!product.name || !product.category || !Number.isFinite(product.price) || product.price < 0 || !product.description) {
-        throw new Error("Complete all required fields and enter a valid numeric price.");
+      if (!product.name || !product.category || (product.price !== null && (!Number.isFinite(product.price) || product.price < 0)) || !product.description) {
+        throw new Error("Complete all required fields and enter a valid price.");
       }
       let updatedProducts;
       if (existingId) {
