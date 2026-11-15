@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://autumn-wave-c1cemuriels-creative-corner-admin.nikithafurtado13.workers.dev/api/:path*"
+    }
+  ]
+}
