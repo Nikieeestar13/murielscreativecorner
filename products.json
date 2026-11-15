@@ -1,5 +1,17 @@
 [
   {
+    "id": "6b1a4cb5-7204-468a-acbe-f323b4bd0b9f",
+    "name": "demo",
+    "category": "Flowers",
+    "price": 200,
+    "description": "aomething something",
+    "images": [
+      "images/products/7c97e0b6-0216-4ef0-ad9b-790ed21568b5.webp",
+      "images/products/4afb915e-7835-4551-9621-9d178feea357.webp",
+      "images/products/c66d8fb8-c2f6-4f14-afb8-920bf7a3b6ca.webp"
+    ]
+  },
+  {
     "id": "legacy-001-doll",
     "name": "Doll",
     "category": "Amigurumi",
