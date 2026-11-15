@@ -1,3 +1,5 @@
 window.MURIELS_CONFIG = {
-  API_BASE_URL: "https://autumn-wave-c1cemuriels-creative-corner-admin.nikithafurtado13.workers.dev"
+  // Route admin API calls through the website's own domain so browsers treat
+  // the login session cookie as first-party (including Incognito).
+  API_BASE_URL: "https://murielscreativecorner.vercel.app"
 };
