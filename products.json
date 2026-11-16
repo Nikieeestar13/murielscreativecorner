@@ -1,5 +1,16 @@
 [
   {
+    "id": "9493906f-557a-48d1-b4d1-9e2cdbfc919b",
+    "name": "test",
+    "category": "Amigurumi/ toys",
+    "price": 23,
+    "description": "test",
+    "images": [
+      "images/products/77dba3d4-b71a-42d4-b63a-8329b2d52b6a.webp",
+      "images/products/4d2b6064-e442-425d-93c3-801035d88913.png"
+    ]
+  },
+  {
     "id": "fa8401a8-93b1-4650-8705-5217233c281c",
     "name": "Tree ornaments(3&6)",
     "category": "Christmas",
