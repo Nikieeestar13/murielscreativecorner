@@ -1,5 +1,17 @@
 [
   {
+    "id": "fa8401a8-93b1-4650-8705-5217233c281c",
+    "name": "Tree ornaments",
+    "category": "Christmas",
+    "price": 0,
+    "description": "Pack of 6 for 1800\nPack of 3 for 1100",
+    "images": [
+      "images/products/907039e1-fe60-4b06-95cf-d572330ac64a.jpg",
+      "images/products/ee054558-a266-4ffe-9908-84131bbc46f2.jpg",
+      "images/products/8c8ae9a4-2e77-41a8-b0c8-7627da525b44.jpg"
+    ]
+  },
+  {
     "id": "legacy-001-doll",
     "name": "Doll",
     "category": "Amigurumi/ toys",
