@@ -75,6 +75,7 @@
   function clearForm() {
     $("product-id").value = "";
     $("product-form").reset();
+    $("image-file-0").required = true;
     updatePriceInput();
     $("form-heading").textContent = "Add New Product";
     $("save-product").textContent = "Add Product";
@@ -85,6 +86,7 @@
   function editProduct(id) {
     const p = products.find(x => x.id === id); if (!p) return;
     $("product-id").value = p.id;
+    $("image-file-0").required = false;
     $("product-name").value = p.name;
     $("product-category").value = p.category;
     $("price-type").value = p.price == null ? "request" : "numeric";
@@ -144,7 +146,8 @@
       const existingProduct = existingId ? products.find(p => p.id === existingId) : null;
       if (existingId && !existingProduct) throw new Error("This product no longer exists. Refresh and try again.");
       const selectedFiles = [0,1,2].map(i => $("image-file-" + i).files[0] || null);
-      if (!existingId && selectedFiles.every(file => !file)) throw new Error("Please choose at least one product image.");
+      if (!existingId && !selectedFiles[0]) throw new Error("Please choose Image 1. Images 2 and 3 are optional.");
+      if (existingId && !existingProduct.images?.[0] && !selectedFiles[0]) throw new Error("Please choose Image 1. Images 2 and 3 are optional.");
       for (const file of selectedFiles) {
         if (file && !ALLOWED_IMAGE_TYPES.includes(file.type)) throw new Error("Use JPG, PNG, WEBP or GIF images.");
         if (file && file.size >= MAX_IMAGE_BYTES) throw new Error("Each image must be smaller than 700 KB.");
