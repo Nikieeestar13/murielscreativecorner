@@ -53,7 +53,7 @@
       <div class="py-3 flex items-center gap-3">
         <img src="${escapeAttr(p.images?.[0] || "")}" alt="" class="w-14 h-14 rounded-lg object-cover bg-[#F2EFEA]">
         <div class="min-w-0 flex-1"><p class="font-semibold text-sm truncate">${escapeHtml(p.name)}</p>
-          <p class="text-xs text-[#66625D]">${escapeHtml(p.category)} · ${p.price == null ? "Price on request" : "₹" + Number(p.price).toLocaleString("en-IN")}</p></div>
+          <p class="text-xs text-[#66625D]">${escapeHtml(p.category)} · ${p.price == null ? (p.priceDisplay === "description" ? "Price in the description" : "Price on request") : "₹" + Number(p.price).toLocaleString("en-IN")}</p></div>
         <div class="flex gap-1"><button class="btn btn-secondary edit-product" data-id="${escapeAttr(p.id)}">Edit</button><button class="btn btn-secondary delete-product text-red-700" data-id="${escapeAttr(p.id)}">Delete</button></div>
       </div>`).join("") || '<p class="py-6 text-sm text-[#66625D]">No products found.</p>';
     document.querySelectorAll(".edit-product").forEach(b => b.addEventListener("click", () => editProduct(b.dataset.id)));
@@ -89,7 +89,7 @@
     $("image-file-0").required = false;
     $("product-name").value = p.name;
     $("product-category").value = p.category;
-    $("price-type").value = p.price == null ? "request" : "numeric";
+    $("price-type").value = p.price == null ? (p.priceDisplay === "description" ? "description" : "request") : "numeric";
     $("product-price").value = p.price ?? "";
     updatePriceInput();
     $("product-description").value = p.description;
@@ -166,7 +166,8 @@
         id: existingId || crypto.randomUUID(),
         name: $("product-name").value.trim(),
         category: $("product-category").value,
-        price: $("price-type").value === "request" ? null : Number($("product-price").value),
+        price: $("price-type").value === "numeric" ? Number($("product-price").value) : null,
+        priceDisplay: $("price-type").value === "description" ? "description" : "request",
         description: $("product-description").value.trim(),
         images: finalImagePaths
       };
