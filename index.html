@@ -347,8 +347,8 @@
       }[ch]));
     }
 
-    function formatPrice(price) {
-      if (price === null || price === undefined || price === "") return "Price on request";
+    function formatPrice(price, priceDisplay) {
+      if (price === null || price === undefined || price === "") return priceDisplay === "description" ? "Price in the description" : "Price on request";
       return new Intl.NumberFormat("en-IN", {
         style: "currency", currency: "INR", maximumFractionDigits: 0
       }).format(Number(price));
@@ -391,10 +391,10 @@
           <div class="mt-2">
             <span class="text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-medium">${escapeHtml(product.category)}</span>
             <h3 class="serif text-xs sm:text-base font-medium mt-0.5 text-[var(--text-primary)] truncate">${escapeHtml(product.name)}</h3>
-            <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">${escapeHtml(formatPrice(product.price))}</span>
+            <span class="block mt-1 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">${escapeHtml(formatPrice(product.price, product.priceDisplay))}</span>
           </div>`;
         card.addEventListener("click", () => openProductModal({
-          id: product.id, title: product.name, price: formatPrice(product.price),
+          id: product.id, title: product.name, price: formatPrice(product.price, product.priceDisplay),
           description: product.description, images: product.images
         }));
         card.addEventListener("keydown", event => {
