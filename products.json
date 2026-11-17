@@ -1,5 +1,18 @@
 [
   {
+    "id": "84c96689-b839-4dc4-871d-ade3a9409005",
+    "name": "Teddy",
+    "category": "Amigurumi/ toys",
+    "price": 1800,
+    "priceDisplay": "request",
+    "description": "A teddy to hold when words aren't enough\n\nHeight-10inch",
+    "images": [
+      "images/products/0bda94c3-bcf8-4d5e-904a-15592427f150.jpg",
+      "images/products/49eb6e2f-0e55-41ef-ab1a-7ea6be7c289f.jpg",
+      "images/products/d23027a8-10b9-4185-b320-2e5b56bc7d30.jpg"
+    ]
+  },
+  {
     "id": "7b0d413e-d10c-437d-b718-9281d1cd988f",
     "name": "Reindeer",
     "category": "Amigurumi/ toys",
