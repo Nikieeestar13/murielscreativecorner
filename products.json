@@ -1,5 +1,16 @@
 [
   {
+    "id": "35dfe801-e1a4-479a-bcf6-bb8f9f639c22",
+    "name": "Angel",
+    "category": "Religious",
+    "price": null,
+    "priceDisplay": "request",
+    "description": "A little guardian angel to keep close to your heart",
+    "images": [
+      "images/products/804896c0-0adc-45cb-9ca2-9f0edaa72ba6.jpg"
+    ]
+  },
+  {
     "id": "8bb662f7-22ac-401d-b8fd-f0445ba7a21a",
     "name": "Elephant",
     "category": "Amigurumi/ toys",
