@@ -149,7 +149,8 @@
     "id": "legacy-007-bouquet-of-yarn-goodness",
     "name": "Bouquet of yarn Goodness",
     "category": "Flowers",
-    "price": 3200,
+    "price": 3500,
+    "priceDisplay": "request",
     "description": "An everlasting floral bundle",
     "images": [
       "bouquet2.webp",
