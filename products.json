@@ -399,8 +399,9 @@
   {
     "id": "legacy-030-holy-rosary",
     "name": "Holy Rosary",
-    "category": "Amigurumi/ toys",
+    "category": "Religious",
     "price": 2800,
+    "priceDisplay": "request",
     "description": "Threaded with grace!",
     "images": [
       "rosary.webp",
