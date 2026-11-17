@@ -148,7 +148,8 @@
     "id": "legacy-009-bunny-plushie",
     "name": "Bunny Plushie",
     "category": "Amigurumi/ toys",
-    "price": null,
+    "price": 2800,
+    "priceDisplay": "request",
     "description": "Skipping into your heart with a bow and a bounce!",
     "images": [
       "rabbit3.webp",
