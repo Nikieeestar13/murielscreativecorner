@@ -1,5 +1,17 @@
 [
   {
+    "id": "7b0d413e-d10c-437d-b718-9281d1cd988f",
+    "name": "Reindeer",
+    "category": "Christmas",
+    "price": 570,
+    "priceDisplay": "request",
+    "description": "Too cute to be left wandering in the woods!",
+    "images": [
+      "images/products/a896c4d3-aba1-408e-9d7d-7ba3bb7d540d.jpg",
+      "images/products/24624ef9-0047-4b14-81fb-5ad6feb16806.jpg"
+    ]
+  },
+  {
     "id": "35dfe801-e1a4-479a-bcf6-bb8f9f639c22",
     "name": "Angel",
     "category": "Religious",
