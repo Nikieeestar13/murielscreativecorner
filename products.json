@@ -582,7 +582,8 @@
     "id": "legacy-045-tulip",
     "name": "Tulip",
     "category": "Flowers",
-    "price": null,
+    "price": 200,
+    "priceDisplay": "request",
     "description": "A cozy tulip that stays bright and perky 365 days a year.",
     "images": [
       "tulip.webp",
