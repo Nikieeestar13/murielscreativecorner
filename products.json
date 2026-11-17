@@ -1,5 +1,18 @@
 [
   {
+    "id": "8bb662f7-22ac-401d-b8fd-f0445ba7a21a",
+    "name": "Elephant",
+    "category": "Amigurumi/ toys",
+    "price": 2800,
+    "priceDisplay": "request",
+    "description": "A trunk full of sweetness and a heart full of sunshine",
+    "images": [
+      "images/products/de3b5f85-d024-4ecd-915e-ebba35d34823.jpg",
+      "images/products/ce5c6ad6-eb3b-4675-95a4-535cb44e8d6e.jpg",
+      "images/products/39ab5341-2fb3-48ca-aaf0-10678c5a6001.jpg"
+    ]
+  },
+  {
     "id": "fa8401a8-93b1-4650-8705-5217233c281c",
     "name": "Tree ornaments(pack of 3 & 6)",
     "category": "Christmas",
