@@ -680,7 +680,8 @@
     "id": "legacy-051-elephant",
     "name": "Elephant",
     "category": "Amigurumi/ toys",
-    "price": null,
+    "price": 850,
+    "priceDisplay": "request",
     "description": "Phant-astic in every stitch!",
     "images": [
       "elephant1.webp",
