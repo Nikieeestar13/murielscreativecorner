@@ -650,9 +650,10 @@
   },
   {
     "id": "legacy-052-reindeer",
-    "name": "Reindeer",
+    "name": "Rudolf Reindeer",
     "category": "Christmas",
     "price": null,
+    "priceDisplay": "request",
     "description": "Featuring tiny antlers and a cute button nose.",
     "images": [
       "deer2.webp",
