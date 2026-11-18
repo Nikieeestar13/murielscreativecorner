@@ -523,7 +523,10 @@
     function inquireOnWhatsApp() {
       if (!activeProduct) return;
       const phoneNumber = "918788234001";
-      const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}`;
+      const productUrl = new URL(window.location.href);
+      productUrl.searchParams.set("product", activeProduct.id);
+      productUrl.hash = "products";
+      const message = `Hello! I would like to inquire about the following product:\n\n*Product:* ${activeProduct.title}\n*Price:* ${activeProduct.price}\n*Description:* ${activeProduct.description}\n\n*View product:* ${productUrl.toString()}`;
       window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
     }
 
@@ -538,6 +541,21 @@
         const categories = await categoryResponse.json();
         renderCategories(categories);
         renderProducts();
+
+        // Open the matching product when someone visits a shared product link.
+        const requestedProductId = new URLSearchParams(window.location.search).get("product");
+        if (requestedProductId) {
+          const linkedProduct = products.find(product => String(product.id) === requestedProductId);
+          if (linkedProduct) {
+            openProductModal({
+              id: linkedProduct.id,
+              title: linkedProduct.name,
+              price: formatPrice(linkedProduct.price, linkedProduct.priceDisplay),
+              description: linkedProduct.description,
+              images: linkedProduct.images
+            });
+          }
+        }
       } catch (error) {
         grid.innerHTML = '<p class="col-span-full py-8 text-center text-sm text-red-600">The product catalogue could not be loaded. Please refresh the page.</p>';
         count.textContent = "Catalogue unavailable";
