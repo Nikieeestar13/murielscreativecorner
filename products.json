@@ -247,8 +247,9 @@
     "id": "legacy-015-letter-keychains",
     "name": "Letter Keychains",
     "category": "Keychains",
-    "price": 800,
-    "description": "Personalised letter keychains",
+    "price": null,
+    "priceDisplay": "request",
+    "description": "Personalised letter keychains\n\n(Prices will vary based on the additional charm)",
     "images": [
       "letter4.webp",
       "a.webp",
