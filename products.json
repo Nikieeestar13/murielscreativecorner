@@ -223,7 +223,8 @@
     "id": "legacy-013-sunflower-keychain",
     "name": "Sunflower keychain",
     "category": "Keychains",
-    "price": null,
+    "price": 160,
+    "priceDisplay": "request",
     "description": "A permanent pop of summertime warmth",
     "images": [
       "sf1.jpg",
