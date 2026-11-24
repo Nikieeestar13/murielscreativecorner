@@ -1,5 +1,16 @@
 [
   {
+    "id": "9d4414f3-2e90-49c7-9b40-2e677472f33f",
+    "name": "Bridal bouquet",
+    "category": "Flowers",
+    "price": null,
+    "priceDisplay": "request",
+    "description": "A bouquet that blooms forever. 🤍\n\nDelicate tulips paired with dainty lilies of the valley, flowers that will never fade — made to be cherished long after the big day. 💐\n\nBecause some love stories deserve flowers that last forever. ✨",
+    "images": [
+      "images/products/5f0f7934-c9a5-4dfc-8898-a685ea693442.jpg"
+    ]
+  },
+  {
     "id": "538c270f-c846-4527-80f3-3f1909b3e2de",
     "name": "Bunny",
     "category": "Amigurumi/ toys",
